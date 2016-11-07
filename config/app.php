@@ -177,7 +177,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        LaravelAcl\Authentication\AuthenticationServiceProvider::class
+        LaravelAcl\Authentication\AuthenticationServiceProvider::class,
+        Backpack\Base\BaseServiceProvider::class,
+        Backpack\CRUD\CrudServiceProvider::class,
 
     ],
 
