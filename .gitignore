@@ -6,3 +6,5 @@ Homestead.yaml
 /storage
 /bootstrap/cache
 /nbproject
+.env
+/config/database.php

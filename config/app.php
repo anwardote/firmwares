@@ -180,6 +180,9 @@ return [
         LaravelAcl\Authentication\AuthenticationServiceProvider::class,
         Backpack\Base\BaseServiceProvider::class,
         Backpack\CRUD\CrudServiceProvider::class,
+		Cviebrock\EloquentSluggable\ServiceProvider::class, 
+		Backpack\PageManager\PageManagerServiceProvider::class,
+		Backpack\NewsCRUD\NewsCRUDServiceProvider::class,
 
     ],
 
