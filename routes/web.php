@@ -75,10 +75,20 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'tutorials',
         'uses' => 'TutorialsController@getIndex']);
 
-    Route::get('/firmwares', [
+    Route::get('/firmware/list', [
         'middleware' => array('can_see'),
-        'as' => 'firmwares',
-        'uses' => 'FirmwaresController@getIndex']);
+        'as' => 'firmware.list',
+        'uses' => 'FirmwaresController@getAdminList']);
+    
+    Route::get('/firmware/new', [
+        'middleware' => array('can_see'),
+        'as' => 'firmware.new',
+        'uses' => 'FirmwaresController@getNew']);
+    
+      Route::get('/firmware/new', [
+        'middleware' => array('can_see'),
+        'as' => 'firmware.new',
+        'uses' => 'FirmwaresController@postNew']);  
 
     Route::get('/drivers', [
         'middleware' => array('can_see'),

@@ -16,6 +16,13 @@ return [
             "link" => '/admin/users/dashboard',
             "permissions" => ["_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
         ],
+        
+        [
+            "name" => "Firmware",
+            "route" => "firmware.list",
+            "link" => '/admin/firmware/list',
+            "permissions" => ["_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
+        ],        
         [
             /*
              * the name of the link: you will see it in the admin menu panel.

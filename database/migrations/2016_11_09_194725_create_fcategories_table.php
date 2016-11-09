@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticleTagTable extends Migration
+class CreateFcategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +13,10 @@ class CreateArticleTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_tag', function (Blueprint $table) {
+        Schema::create('fcategories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('article_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
-            $table->nullableTimestamps();
-            $table->softDeletes();
+            $table->string('title');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateArticleTagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('article_tag');
+        Schema::dropIfExists('fcategories');
     }
 }

@@ -70,7 +70,7 @@ View::composer(['laravel-authentication-acl::admin.group.*'], function ($view) {
  */
 View::composer(['laravel-authentication-acl::admin.permission.*'], function ($view) {
     $view->with('sidebar_items', [
-                "Groups list" => [
+        "Groups list" => [
             'url' => URL::route('groups.list'),
             "icon" => '<i class="fa fa-users"></i>'
         ],
@@ -86,5 +86,23 @@ View::composer(['laravel-authentication-acl::admin.permission.*'], function ($vi
             'url' => URL::route('permission.edit'),
             "icon" => '<i class="fa fa-plus-circle"></i>'
         ]
+    ]);
+});
+
+
+/**
+ *  Firmware sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.firmware.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Firmware list" => [
+            'url' => URL::route('firmware.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        
+        " Firmware Add" => [
+            'url' => URL::route('firmware.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]        
     ]);
 });

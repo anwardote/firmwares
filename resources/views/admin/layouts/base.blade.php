@@ -17,7 +17,6 @@
         {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/baselayout.css') !!}
         {!! HTML::style('packages/jacopo/laravel-authentication-acl/css/fonts.css') !!}
         {!! HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') !!}
-        <link rel="stylesheet" href="{{ asset('vendor/backpack/pnotify/pnotify.custom.min.css') }}">
         @yield('head_css')
         {{-- End head css --}}
 
