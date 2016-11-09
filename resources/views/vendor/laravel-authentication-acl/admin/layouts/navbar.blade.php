@@ -1,17 +1,20 @@
 <?php
-//$current_route = \Request::route()->getName();
-//$authentication = \App::make('authenticator');
-//$user = $authentication->getLoggedUser();
-//$user_group = strtolower($user->groups()->first()->name);
-//if ($user_group == "admin" || $user_group == "superadmin" || $user_group == "health system admin" || $user_group == "health plan admin" || $user_group == "employer admin") {
-//    
-//} else {
+$current_route = \Request::route()->getName();
+$authentication = \App::make('authenticator');
+$user = $authentication->getLoggedUser();
+if ($user) {
+    $user_group = strtolower($user->groups()->first()->name);
+    if ($user_group !== "superadmin") {
+        ?>
+
+        <?php
+    }
+} else {
     ?>
     <style>
-                #addtlLinks .user-menu a:nth-child(1){display: none !important;}
+        #addtlLinks .up{visibility: hidden !important;}
     </style>
-
-<?php // } ?>
+<?php } ?>
 <style>
 
     .user-menu{display:none;padding: 0 !important;padding:0 !important;list-style:none;position: absolute;  border: 1px solid #ccc;background:#fff;z-index:999;margin:0;}
@@ -34,7 +37,7 @@
         </a>
         <div id="hdrRight" class="right">
 
-            <div id="addtlLinks">
+            <div id="addtlLinks" class="nimbuzz">
                 <a class="up">Welcome &nbsp;</a>
                 <!--a>Welcome <i class="fa fa-caret-up" aria-hidden="true"></i></a-->
                 <div class="user-menu">
@@ -44,7 +47,6 @@
                     @endforeach
                     @endif  
                     <a href="{!! URL::route('users.selfprofile.edit') !!}">My Account</a>
-                    <a href="#">Contact Us</a>
                     <a href="{!! URL::route('user.logout') !!}">Sign Out</a>
                 </div>
             </div>
@@ -59,13 +61,12 @@
                 <div id="navigation-container">
                     <div id="navMiniMobile"> <span> | <a href="{!! URL::route('users.selfprofile.edit') !!}">My Account</a><span> | </span><a href="#">Contact Us</a><span> | </span><a href="{!! URL::route('user.logout') !!}">Sign Out</a></div>
                     <ul class="menu">
-                        <li <?php //if (isset($current_route) && $current_route == "home"): ?>class="active"<?php //endif; ?>><a href="#">Home</a><li>       
-                        <li <?php //if (isset($current_route) && $current_route == "howtouse"): ?>class="active" <?php //endif; ?>><a href="#">How to use</a><li>       
-                        <li <?php //if (isset($current_route) && $current_route == "encourageactivation"): ?>class="active" <?php //endif; ?>><a href="#">Encourage Activation</a><li>       
-                        <li <?php //if (isset($current_route) && $current_route == "promoteutilization"): ?>class="active" <?php //endif; ?>><a href="#">Promote Utilization</a><li>       
-                        <li <?php //if (isset($current_route) && $current_route == "brand-asset"): ?>class="active" <?php //endif; ?>><a href="#">Market the brand</a><li>       
-                        <li <?php //if (isset($current_route) && $current_route == "news-media"): ?>class="active" <?php //endif; ?>><a href="#">News & Media</a><li>
-                        <li <?php //if (isset($current_route) && $current_route == "resources"): ?>class="active" <?php //endif; ?>><a href="#">Resources</a><li>
+                        <li <?php if (isset($current_route) && $current_route == "home"): ?>class="active"<?php endif; ?>><a href="/">Home</a><li>       
+                        <li <?php if (isset($current_route) && $current_route == "howtouse"): ?>class="active" <?php endif; ?>><a href="#">Tutorials</a><li>       
+                        <li <?php if (isset($current_route) && $current_route == "encourageactivation"): ?>class="active" <?php endif; ?>><a href="#">Firmware</a><li>       
+                        <li <?php if (isset($current_route) && $current_route == "promoteutilization"): ?>class="active" <?php endif; ?>><a href="#">Driver</a><li>       
+                        <li <?php if (isset($current_route) && $current_route == "brand-asset"): ?>class="active" <?php endif; ?>><a href="#">Tools</a><li>       
+                        <li <?php if (isset($current_route) && $current_route == "contact.form"): ?>class="active" <?php endif; ?>><a href="{!! URL::route('contact.form') !!}">Contact Us</a><li>       
                     </ul>       
                 </div>
             </div>				

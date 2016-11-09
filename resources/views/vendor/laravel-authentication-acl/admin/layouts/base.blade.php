@@ -77,5 +77,21 @@
                 }
             });
         </script>
+        <?php
+        $current_route = \Request::route()->getName();
+        $authentication = \App::make('authenticator');
+        $user = $authentication->getLoggedUser();
+        if (!$user) {
+            ?>
+            <script>
+                $(document).ready(function () {
+                    var loginurl = '<a href="{!! URL::route('user.login') !!}">Login</a>'
+                    $("#addtlLinks").html(loginurl)
+                })
+            </script>
+
+            <?php
+        }
+        ?>
     </body>
 </html>

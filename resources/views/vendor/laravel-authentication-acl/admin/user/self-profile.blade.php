@@ -69,6 +69,12 @@ Admin area: Edit user profile
                             {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('phone') !!}</span>
+                        
+                                               <!-- email text field -->
+                        <div class="form-group">
+                            {!! Form::label('email','Email: ') !!}
+                            {!! Form::text('email', $email, ['class' => 'form-control', 'readonly' => 'true']) !!}
+                        </div>
                         <!-- state text field -->
                         <div class="form-group">
                             {!! Form::label('state','State: ') !!}

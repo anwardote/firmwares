@@ -6,10 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Venturecraft\\Revisionable' => array($vendorDir . '/venturecraft/revisionable/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
-    'LiveControl\\EloquentDataTable' => array($vendorDir . '/livecontrol/eloquent-datatable/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'Gregwar\\Captcha' => array($vendorDir . '/gregwar/captcha'),

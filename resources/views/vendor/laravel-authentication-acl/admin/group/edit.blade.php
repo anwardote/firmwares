@@ -25,7 +25,6 @@ Admin area: edit group
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         {{-- group base form --}}
-                        <h4>General data</h4>
                         {!! Form::model($group, [ 'url' => [URL::route('groups.edit'), $group->id], 'method' => 'post'] ) !!}
                         <!-- name text field -->
                         <div class="form-group">
@@ -40,7 +39,7 @@ Admin area: edit group
                     </div>
                     <div class="col-md-6 col-xs-12">
                     {{-- group permission form --}}
-                        <h4><i class="fa fa-lock"></i> Permissions</h4>
+                        {!! Form::label('name','Permissions') !!}
                         {{-- permissions --}}
                         @include('laravel-authentication-acl::admin.group.perm')
                     </div>

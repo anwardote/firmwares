@@ -50,7 +50,6 @@
         {{-- End footer scripts --}}
         {{--Footer--}}
         @include('laravel-authentication-acl::admin.layouts.footer') 
-        @include('backpack::inc.alerts')
         <script>
             function sizeLeftMenuFiller() {
                 var tmpOffset = jQuery("#navigation-container").offset();
@@ -93,7 +92,27 @@
                         $(this).addClass("active").next().slideDown();
                     }
                 });
+
+
             })
         </script>
+        <?php
+        $current_route = \Request::route()->getName();
+        $authentication = \App::make('authenticator');
+        $user = trim($authentication->getLoggedUser());
+        
+        if (!$user) {
+            ?>
+            <script>
+                $(document).ready(function(){
+                    var loginurl='<a href="{!! URL::route('user.login') !!}">Login</a>'
+                    $("#addtlLinks").html(loginurl)
+                })
+            </script>
+
+            <?php
+        }
+        ?>
     </body>
 </html>
+
