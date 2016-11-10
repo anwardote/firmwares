@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin'], function () {
         'as' => 'firmware.new',
         'uses' => 'FirmwaresController@getNew']);
     
-      Route::get('/firmware/new', [
+      Route::post('/firmware/new', [
         'middleware' => array('can_see'),
         'as' => 'firmware.new',
         'uses' => 'FirmwaresController@postNew']);  

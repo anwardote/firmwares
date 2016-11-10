@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |    ]
     */
     'disks' => [
-        // 'uploads',
+
     ],
 
     /*
@@ -39,8 +39,8 @@ return [
     */
 
     'route' => [
-        'prefix'     => config('backpack.base.route_prefix').'/elfinder',
-        'middleware' => ['web', 'auth'], //Set to null to disable middleware filter
+        'prefix' => 'elfinder',
+        'middleware' => null, //Set to null to disable middleware filter
     ],
 
     /*
@@ -76,6 +76,19 @@ return [
     |
     */
 
-    'options' => [],
+    'options' => array(),
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Root Options
+    |--------------------------------------------------------------------------
+    |
+    | These options are merged, together with every root by default.
+    | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#root-options
+    |
+    */
+    'root_options' => array(
 
-];
+    ),
+
+);

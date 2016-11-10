@@ -12,9 +12,9 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -63,7 +63,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
-            'Prologue\\Alerts\\' => 16,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -75,10 +74,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
             'League\\Flysystem\\Cached\\' => 24,
             'League\\Flysystem\\' => 17,
             'LaravelAcl\\' => 11,
-        ),
-        'J' => 
-        array (
-            'Jenssegers\\Date\\' => 16,
         ),
         'I' => 
         array (
@@ -104,9 +99,7 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         ),
         'C' => 
         array (
-            'Cviebrock\\EloquentSluggable\\' => 28,
             'Collective\\Html\\' => 16,
-            'Cocur\\Slugify\\' => 14,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -114,10 +107,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         array (
             'Barryvdh\\elFinderFlysystemDriver\\' => 33,
             'Barryvdh\\Elfinder\\' => 18,
-            'Backpack\\PageManager\\' => 21,
-            'Backpack\\NewsCRUD\\' => 18,
-            'Backpack\\CRUD\\' => 14,
-            'Backpack\\Base\\' => 14,
         ),
         'A' => 
         array (
@@ -228,10 +217,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'Prologue\\Alerts\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/prologue/alerts/src',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -251,10 +236,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'LaravelAcl\\' => 
         array (
             0 => __DIR__ . '/..' . '/jacopo/laravel-authentication-acl/app',
-        ),
-        'Jenssegers\\Date\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/jenssegers/date/src',
         ),
         'Intervention\\Image\\' => 
         array (
@@ -296,17 +277,9 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Cviebrock\\EloquentSluggable\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src',
-        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
-        ),
-        'Cocur\\Slugify\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
         'ClassPreloader\\' => 
         array (
@@ -324,22 +297,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-elfinder/src',
         ),
-        'Backpack\\PageManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/backpack/pagemanager/src',
-        ),
-        'Backpack\\NewsCRUD\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/backpack/newscrud/src',
-        ),
-        'Backpack\\CRUD\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/backpack/crud/src',
-        ),
-        'Backpack\\Base\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/backpack/base/src',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -347,13 +304,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
     );
 
     public static $prefixesPsr0 = array (
-        'V' => 
-        array (
-            'Venturecraft\\Revisionable' => 
-            array (
-                0 => __DIR__ . '/..' . '/venturecraft/revisionable/src',
-            ),
-        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -366,13 +316,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
-            ),
-        ),
-        'L' => 
-        array (
-            'LiveControl\\EloquentDataTable' => 
-            array (
-                0 => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src',
             ),
         ),
         'J' => 
@@ -432,64 +375,23 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FirmwaresController' => __DIR__ . '/../..' . '/app/Http/Controllers/FirmwaresController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\PageTemplates' => __DIR__ . '/../..' . '/app/PageTemplates.php',
+        'App\\Http\\Requests\\ContactFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ContactFormRequest.php',
+        'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
+        'App\\Http\\Requests\\StoreTemplatePostRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreTemplatePostRequest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'Backpack\\Base\\BaseServiceProvider' => __DIR__ . '/..' . '/backpack/base/src/BaseServiceProvider.php',
-        'Backpack\\Base\\app\\Http\\Controllers\\AdminController' => __DIR__ . '/..' . '/backpack/base/src/app/Http/Controllers/AdminController.php',
-        'Backpack\\Base\\app\\Http\\Controllers\\Auth\\AuthController' => __DIR__ . '/..' . '/backpack/base/src/app/Http/Controllers/Auth/AuthController.php',
-        'Backpack\\Base\\app\\Http\\Controllers\\Auth\\PasswordController' => __DIR__ . '/..' . '/backpack/base/src/app/Http/Controllers/Auth/PasswordController.php',
-        'Backpack\\Base\\app\\Http\\Controllers\\Controller' => __DIR__ . '/..' . '/backpack/base/src/app/Http/Controllers/Controller.php',
-        'Backpack\\Base\\app\\Http\\Middleware\\Admin' => __DIR__ . '/..' . '/backpack/base/src/app/Http/Middleware/Admin.php',
-        'Backpack\\Base\\app\\Notifications\\ResetPasswordNotification' => __DIR__ . '/..' . '/backpack/base/src/app/Notifications/ResetPasswordNotification.php',
-        'Backpack\\CRUD\\CrudPanel' => __DIR__ . '/..' . '/backpack/crud/src/CrudPanel.php',
-        'Backpack\\CRUD\\CrudServiceProvider' => __DIR__ . '/..' . '/backpack/crud/src/CrudServiceProvider.php',
-        'Backpack\\CRUD\\CrudTrait' => __DIR__ . '/..' . '/backpack/crud/src/CrudTrait.php',
-        'Backpack\\CRUD\\PanelTraits\\Access' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Access.php',
-        'Backpack\\CRUD\\PanelTraits\\AutoFocus' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/AutoFocus.php',
-        'Backpack\\CRUD\\PanelTraits\\AutoSet' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/AutoSet.php',
-        'Backpack\\CRUD\\PanelTraits\\Buttons' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Buttons.php',
-        'Backpack\\CRUD\\PanelTraits\\Columns' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Columns.php',
-        'Backpack\\CRUD\\PanelTraits\\Create' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Create.php',
-        'Backpack\\CRUD\\PanelTraits\\CrudButton' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Buttons.php',
-        'Backpack\\CRUD\\PanelTraits\\Delete' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Delete.php',
-        'Backpack\\CRUD\\PanelTraits\\FakeColumns' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/FakeColumns.php',
-        'Backpack\\CRUD\\PanelTraits\\FakeFields' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/FakeFields.php',
-        'Backpack\\CRUD\\PanelTraits\\Fields' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Fields.php',
-        'Backpack\\CRUD\\PanelTraits\\Query' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Query.php',
-        'Backpack\\CRUD\\PanelTraits\\Read' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Read.php',
-        'Backpack\\CRUD\\PanelTraits\\Reorder' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Reorder.php',
-        'Backpack\\CRUD\\PanelTraits\\Update' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/Update.php',
-        'Backpack\\CRUD\\PanelTraits\\ViewsAndRestoresRevisions' => __DIR__ . '/..' . '/backpack/crud/src/PanelTraits/ViewsAndRestoresRevisions.php',
-        'Backpack\\CRUD\\app\\Http\\Controllers\\CrudController' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Controllers/CrudController.php',
-        'Backpack\\CRUD\\app\\Http\\Controllers\\CrudFeatures\\AjaxTable' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Controllers/CrudFeatures/AjaxTable.php',
-        'Backpack\\CRUD\\app\\Http\\Controllers\\CrudFeatures\\Reorder' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Controllers/CrudFeatures/Reorder.php',
-        'Backpack\\CRUD\\app\\Http\\Controllers\\CrudFeatures\\Revisions' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Controllers/CrudFeatures/Revisions.php',
-        'Backpack\\CRUD\\app\\Http\\Controllers\\CrudFeatures\\ShowDetailsRow' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Controllers/CrudFeatures/ShowDetailsRow.php',
-        'Backpack\\CRUD\\app\\Http\\Requests\\CrudRequest' => __DIR__ . '/..' . '/backpack/crud/src/app/Http/Requests/CrudRequest.php',
-        'Backpack\\NewsCRUD\\NewsCRUDServiceProvider' => __DIR__ . '/..' . '/backpack/newscrud/src/NewsCRUDServiceProvider.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Controllers\\Admin\\ArticleCrudController' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Controllers/Admin/ArticleCrudController.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Controllers\\Admin\\CategoryCrudController' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Controllers/Admin/CategoryCrudController.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Controllers\\Admin\\TagCrudController' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Controllers/Admin/TagCrudController.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Requests\\ArticleRequest' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Requests/ArticleRequest.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Requests\\CategoryRequest' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Requests/CategoryRequest.php',
-        'Backpack\\NewsCRUD\\app\\Http\\Requests\\TagRequest' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Http/Requests/TagRequest.php',
-        'Backpack\\NewsCRUD\\app\\Models\\Article' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Models/Article.php',
-        'Backpack\\NewsCRUD\\app\\Models\\Category' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Models/Category.php',
-        'Backpack\\NewsCRUD\\app\\Models\\Tag' => __DIR__ . '/..' . '/backpack/newscrud/src/app/Models/Tag.php',
-        'Backpack\\PageManager\\PageManagerServiceProvider' => __DIR__ . '/..' . '/backpack/pagemanager/src/PageManagerServiceProvider.php',
-        'Backpack\\PageManager\\app\\Http\\Controllers\\Admin\\PageCrudController' => __DIR__ . '/..' . '/backpack/pagemanager/src/app/Http/Controllers/Admin/PageCrudController.php',
-        'Backpack\\PageManager\\app\\Http\\Requests\\PageRequest' => __DIR__ . '/..' . '/backpack/pagemanager/src/app/Http/Requests/PageRequest.php',
-        'Backpack\\PageManager\\app\\Models\\Page' => __DIR__ . '/..' . '/backpack/pagemanager/src/app/Models/Page.php',
         'Barryvdh\\Elfinder\\Connector' => __DIR__ . '/..' . '/barryvdh/laravel-elfinder/src/Connector.php',
         'Barryvdh\\Elfinder\\Console\\PublishCommand' => __DIR__ . '/..' . '/barryvdh/laravel-elfinder/src/Console/PublishCommand.php',
         'Barryvdh\\Elfinder\\Elfinder' => __DIR__ . '/..' . '/barryvdh/laravel-elfinder/src/Elfinder.php',
@@ -574,27 +476,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'ClassPreloader\\Parser\\FileVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/FileVisitor.php',
         'ClassPreloader\\Parser\\NodeTraverser' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/NodeTraverser.php',
         'ClassPreloader\\Parser\\StrictTypesVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/StrictTypesVisitor.php',
-        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyFacade' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyFacade.php',
-        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyServiceProvider.php',
-        'Cocur\\Slugify\\Bridge\\Latte\\SlugifyHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Latte/SlugifyHelper.php',
-        'Cocur\\Slugify\\Bridge\\League\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/League/SlugifyServiceProvider.php',
-        'Cocur\\Slugify\\Bridge\\Nette\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Nette/SlugifyExtension.php',
-        'Cocur\\Slugify\\Bridge\\Plum\\SlugifyConverter' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Plum/SlugifyConverter.php',
-        'Cocur\\Slugify\\Bridge\\Silex2\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Silex2/SlugifyServiceProvider.php',
-        'Cocur\\Slugify\\Bridge\\Silex\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Silex/SlugifyServiceProvider.php',
-        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyBundle' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyBundle.php',
-        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyExtension.php',
-        'Cocur\\Slugify\\Bridge\\Symfony\\Configuration' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/Configuration.php',
-        'Cocur\\Slugify\\Bridge\\Twig\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Twig/SlugifyExtension.php',
-        'Cocur\\Slugify\\Bridge\\ZF2\\Module' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/Module.php',
-        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyService' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyService.php',
-        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelper.php',
-        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelperFactory' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelperFactory.php',
-        'Cocur\\Slugify\\RuleProvider\\DefaultRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/DefaultRuleProvider.php',
-        'Cocur\\Slugify\\RuleProvider\\FileRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/FileRuleProvider.php',
-        'Cocur\\Slugify\\RuleProvider\\RuleProviderInterface' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/RuleProviderInterface.php',
-        'Cocur\\Slugify\\Slugify' => __DIR__ . '/..' . '/cocur/slugify/src/Slugify.php',
-        'Cocur\\Slugify\\SlugifyInterface' => __DIR__ . '/..' . '/cocur/slugify/src/SlugifyInterface.php',
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
         'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
@@ -602,13 +483,16 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CreateCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_194720_create_countries_table.php',
+        'CreateDevicesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_194700_create_devices_table.php',
+        'CreateFcategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_194725_create_fcategories_table.php',
+        'CreateFirmwaresTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_194730_create_firmwares_table.php',
         'CreateGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2014_02_19_095637_create_groups_table.php',
-        'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_25_121918_create_pages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermissionTable' => __DIR__ . '/../..' . '/database/migrations/2014_02_19_160516_create_permission_table.php',
         'CreateProfileField' => __DIR__ . '/../..' . '/database/migrations/2014_05_06_122155_create_profile_field.php',
         'CreateProfileFieldTypes' => __DIR__ . '/../..' . '/database/migrations/2014_05_06_122145_create_profile_field_types.php',
-        'CreateRevisionsTable' => __DIR__ . '/..' . '/venturecraft/revisionable/src/migrations/2013_04_09_062329_create_revisions_table.php',
+        'CreateTutorialsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_194710_create_tutorials_table.php',
         'CreateUserGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2014_02_19_095623_create_user_groups_table.php',
         'CreateUserProfileTable' => __DIR__ . '/../..' . '/database/migrations/2014_02_26_165011_create_user_profile_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/2014_10_12_000000_create_users_table.php',
@@ -622,11 +506,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'Cron\\MinutesField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MonthField.php',
         'Cron\\YearField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/YearField.php',
-        'Cviebrock\\EloquentSluggable\\ServiceProvider' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/ServiceProvider.php',
-        'Cviebrock\\EloquentSluggable\\Services\\SlugService' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Services/SlugService.php',
-        'Cviebrock\\EloquentSluggable\\Sluggable' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Sluggable.php',
-        'Cviebrock\\EloquentSluggable\\SluggableObserver' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableObserver.php',
-        'Cviebrock\\EloquentSluggable\\SluggableScopeHelpers' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableScopeHelpers.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -2241,8 +2120,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
-        'Jenssegers\\Date\\Date' => __DIR__ . '/..' . '/jenssegers/date/src/Date.php',
-        'Jenssegers\\Date\\DateServiceProvider' => __DIR__ . '/..' . '/jenssegers/date/src/DateServiceProvider.php',
         'LaravelAcl\\Authentication\\AuthenticationServiceProvider' => __DIR__ . '/..' . '/jacopo/laravel-authentication-acl/app/Authentication/AuthenticationServiceProvider.php',
         'LaravelAcl\\Authentication\\Classes\\Captcha\\CaptchaValidator' => __DIR__ . '/..' . '/jacopo/laravel-authentication-acl/app/Authentication/Classes/Captcha/CaptchaValidator.php',
         'LaravelAcl\\Authentication\\Classes\\Captcha\\CaptchaValidatorInterface' => __DIR__ . '/..' . '/jacopo/laravel-authentication-acl/app/Authentication/Classes/Captcha/CaptchaValidatorInterface.php',
@@ -2409,12 +2286,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
-        'LiveControl\\EloquentDataTable\\DataTable' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/DataTable.php',
-        'LiveControl\\EloquentDataTable\\EloquentDataTableServiceProvider' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/EloquentDataTableServiceProvider.php',
-        'LiveControl\\EloquentDataTable\\ExpressionWithName' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/ExpressionWithName.php',
-        'LiveControl\\EloquentDataTable\\VersionTransformers\\Version109Transformer' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/VersionTransformers/Version109Transformer.php',
-        'LiveControl\\EloquentDataTable\\VersionTransformers\\Version110Transformer' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/VersionTransformers/Version110Transformer.php',
-        'LiveControl\\EloquentDataTable\\VersionTransformers\\VersionTransformerContract' => __DIR__ . '/..' . '/livecontrol/eloquent-datatable/src/LiveControl/EloquentDataTable/VersionTransformers/VersionTransformerContract.php',
         'MigrationCartalystSentryInstallThrottle' => __DIR__ . '/../..' . '/database/migrations/2012_12_06_225988_migration_cartalyst_sentry_install_throttle.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
@@ -3136,9 +3007,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'PhpParser\\Serializer\\XML' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Serializer/XML.php',
         'PhpParser\\Unserializer' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Unserializer.php',
         'PhpParser\\Unserializer\\XML' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Unserializer/XML.php',
-        'Prologue\\Alerts\\AlertsMessageBag' => __DIR__ . '/..' . '/prologue/alerts/src/AlertsMessageBag.php',
-        'Prologue\\Alerts\\AlertsServiceProvider' => __DIR__ . '/..' . '/prologue/alerts/src/AlertsServiceProvider.php',
-        'Prologue\\Alerts\\Facades\\Alert' => __DIR__ . '/..' . '/prologue/alerts/src/Facades/Alert.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -4009,10 +3877,6 @@ class ComposerStaticInit1b806f9e9ac9157484018d32d428bf6f
         'Symfony\\Polyfill\\Util\\TestListener' => __DIR__ . '/..' . '/symfony/polyfill-util/TestListener.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'Venturecraft\\Revisionable\\FieldFormatter' => __DIR__ . '/..' . '/venturecraft/revisionable/src/Venturecraft/Revisionable/FieldFormatter.php',
-        'Venturecraft\\Revisionable\\Revision' => __DIR__ . '/..' . '/venturecraft/revisionable/src/Venturecraft/Revisionable/Revision.php',
-        'Venturecraft\\Revisionable\\Revisionable' => __DIR__ . '/..' . '/venturecraft/revisionable/src/Venturecraft/Revisionable/Revisionable.php',
-        'Venturecraft\\Revisionable\\RevisionableTrait' => __DIR__ . '/..' . '/venturecraft/revisionable/src/Venturecraft/Revisionable/RevisionableTrait.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'elFinder' => __DIR__ . '/..' . '/studio-42/elfinder/php/elFinder.class.php',

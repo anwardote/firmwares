@@ -178,6 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         LaravelAcl\Authentication\AuthenticationServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        
     ],
 
     /*

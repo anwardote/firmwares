@@ -7,7 +7,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use view,
     DB,
-    App;
+    App,
+    Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
@@ -26,9 +27,7 @@ use LaravelAcl\Authentication\Validators\UserValidator;
 use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
 use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
-use Backpack\NewsCRUD\app\Models\Article;
-use Backpack\PageManager\app\Models\Page;
-use Backpack\NewsCRUD\app\Models\Category as Category;
+use App\Http\Models\Firmware;
 
 class FirmwaresController extends Controller {
 
@@ -51,24 +50,54 @@ class FirmwaresController extends Controller {
     }
 
     public function getNew(Request $request) {
+//        $info=Country::all();
+//        dd($info);
         $info = "welcome to web page";
         return View::make('laravel-authentication-acl::admin.firmware.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
     }
 
     public function postNew(Request $request) {
-        $info = "welcome to web page";
-        return View::make('laravel-authentication-acl::admin.firmware.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
-//        $user_id = $request->get('id');
-//        $group_id = $request->get('group_id');
-//
-//        try {
-//            $this->user_repository->addGroup($user_id, $group_id);
-//        } catch (JacopoExceptionsInterface $e) {
-//            return Redirect::route('users.edit', ["id" => $user_id])
-//                            ->withErrors(new MessageBag(["name" => Config::get('acl_messages.flash.error.user_group_not_found')]));
-//        }
-//        return Redirect::route('users.edit', ["id" => $user_id])
-//                        ->withMessage(Config::get('acl_messages.flash.success.user_group_add_success'));
+
+        $logged_user = $this->auth->getLoggedUser();
+
+        $this->validate($request, [
+            'firmware_category' => 'required', 'device' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required'
+        ]);
+
+
+        $countryArr = implode(",", $request->country);
+        $request->country_id = $countryArr;
+        $request->merge(array('country_id' => $countryArr));
+
+        if ($request->tutorial_id == "" || empty($request->tutorial_id)) {
+            $request->merge(array('tutorial_id' => NULL));
+        }
+
+
+        try {
+            $input = $request->except(['_token', 'country']);
+            $data = new Firmware;
+            $data->fcategory_id = $input['firmware_category'];
+            $data->st_instruct = $input['starting_instruction'];
+            $data->device_id = $input['device'];
+            $data->device_model = $input['device_model'];
+            $data->device_version = $input['device_version'];
+            $data->tutorial_id = $input['tutorial_id'];
+            $data->country_id = $input['country_id'];
+            $data->d_links = $input['download_link'];
+            $data->d_sizes = $input['download_size'];
+            $data->noted = $input['noted'];
+            $data->status = $input['status'];
+            $data->featured = $input['featured'];
+            $data->user_id = $logged_user->id;
+            $data->save();
+        } catch (JacopoExceptionsInterface $e) {
+            $errors = $this->f->getErrors();
+            // passing the id incase fails editing an already existing item
+            return Redirect::route("admin.firmware.new", [])->withInput()->withErrors($errors);
+        }
+        //return Redirect::route('firmware.list')->withMessage(Config::get('acl_messages.flash.success.snippet_new_success'));
+        return Redirect::route('firmware.list');
     }
 
 }
