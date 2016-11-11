@@ -50,43 +50,18 @@ Route::group(['prefix' => ''], function () {
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/home', [
-        'middleware' => 'has_perm:_superadmin,_user-editor',
-        'as' => 'home.new',
-        'uses' => 'HomeController@postNew']);
-
-    Route::get('/home', [
-        'middleware' => 'has_perm:_superadmin,_user-editor',
-        'as' => 'home.edit',
-        'uses' => 'HomeController@getEdit']);
-
-    Route::get('/home', [
-        'middleware' => 'has_perm:_superadmin,_user-editor',
-        'as' => 'home.edit',
-        'uses' => 'HomeController@postEdit']);
-
-    Route::get('/home', [
-        'middleware' => array('can_see'),
-        'as' => 'home',
-        'uses' => 'HomeController@getIndex']);
-
-    Route::get('/tutorials', [
-        'middleware' => array('can_see'),
-        'as' => 'tutorials',
-        'uses' => 'TutorialsController@getIndex']);
-
     Route::get('/firmware/list', [
-        'middleware' => array('can_see'),
+        'middleware' => array('can_see','admin_logged','has_perm:_firmware-editor'),
         'as' => 'firmware.list',
         'uses' => 'FirmwaresController@getAdminList']);
     
     Route::get('/firmware/new', [
-        'middleware' => array('can_see'),
+        'middleware' => array('can_see','admin_logged','has_perm:_firmware-editor'),
         'as' => 'firmware.new',
         'uses' => 'FirmwaresController@getNew']);
     
       Route::post('/firmware/new', [
-        'middleware' => array('can_see'),
+        'middleware' => array('can_see','admin_logged','has_perm:_firmware-editor'),
         'as' => 'firmware.new',
         'uses' => 'FirmwaresController@postNew']);  
 

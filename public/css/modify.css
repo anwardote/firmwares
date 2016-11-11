@@ -306,7 +306,7 @@ margin:0 10px 0 0;display: inline-block;width: auto;border: none;box-shadow: non
     color: #000;
     text-decoration: none;
 }
-#companyProfile a.addMore {
+#firmwareForm a.addMore {
     background: #000 none repeat scroll 0 0;
     color: #fff;
     display: block;

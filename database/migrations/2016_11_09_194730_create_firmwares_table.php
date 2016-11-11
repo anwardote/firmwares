@@ -20,7 +20,7 @@ class CreateFirmwaresTable extends Migration {
             $table->string('device_model')->nullable();
             $table->string('device_version')->nullable();
             $table->integer('tutorial_id')->unsigned()->nullable();
-            $table->integer('country_id')->unsigned()->nullable();
+            $table->string('country_id')->nullable();
             $table->text('d_links')->nullable();
             $table->text('d_sizes')->nullable();
             $table->text('noted')->nullable();
@@ -33,7 +33,6 @@ class CreateFirmwaresTable extends Migration {
             $table->foreign('device_id')->references('id')->on('devices')
                     ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('tutorial_id')->references('id')->on('tutorials');
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('user_id')->references('id')->on('users')
                     ->onUpdate('cascade')->onDelete('cascade');
         });
