@@ -21,7 +21,7 @@ return [
             "name" => "Firmware",
             "route" => "firmware.list",
             "link" => '/admin/firmware/list',
-            "permissions" => ["_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
+            "permissions" => ["_firmware-editor","_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
         ],        
         [
             /*

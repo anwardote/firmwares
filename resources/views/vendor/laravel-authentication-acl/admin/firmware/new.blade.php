@@ -8,12 +8,19 @@ Admin area: add snippets
 {!! HTML::style('css/prism.css') !!}
 {!! HTML::style('css/chosen.css') !!}
 {!! HTML::style('/assets/css/colorbox.css') !!}
+<style>
+    #firmwareForm a.remove {
+        float: right;
+        top:-25px;
+        right:10px;
+    }    
+</style>
 @stop
 
 @section('content')
 {{-- @include('tinymce::tpl')  --}}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" id="firmwareForm">
         {{-- model general errors from the form --}}
         @if($errors->has('model') )
         <div class="alert alert-danger">{!! $errors->first('model') !!}</div>
@@ -38,7 +45,6 @@ Admin area: add snippets
                         'route' => 'firmware.new', 
                         'class' => '', 
                         'files' => true)) !!}
-
                         <div class="form-group">
                             {!! Form::label('firmware_category','Select Firmware Category: *') !!}
                             {!! Form::select('firmware_category', $fcategory_output_values, '', ["class"=>"form-control"]) !!}
@@ -68,13 +74,13 @@ Admin area: add snippets
                             <span class="text-danger">{!! $errors->first('country') !!}</span>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group input_fields_wrap">
                             {!! Form::label('download_link','Download Links:') !!}
-                            {!! Form::text('download_link', null, [ 'class' => 'form-control', 'placeholder' => 'Download links here.']) !!}
-                            <span class="text-danger">{!! $errors->first('download_link') !!}</span>
-                        </div>                        
-
-
+                            {!! Form::text('download_link[]', null, [ 'class' => 'form-control', 'id'=>'download_link','placeholder' => 'Download links here.']) !!}
+                        </div>  
+                        <span class="text-danger">{!! $errors->first('download_link') !!}</span>
+                        <a href="javascript:void(0)" class="addMore add_field_button">Add More</a>
+                        
                         <div class="form-group">
                             {!! Form::label('download_size','Download size:') !!}
                             {!! Form::text('download_size', null, [ 'class' => 'form-control', 'placeholder' => 'Download size here.']) !!}
@@ -155,6 +161,30 @@ Admin area: add snippets
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
+
+    $(document).ready(function () {
+        var max_fields = 10; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+                x++; //text box increment
+
+                $(wrapper).append('<div style="margin-top:10px"><input type="text" name="download_link[]" class="form-control" placeholder="More Download links here." required="required"/><a href="javascript:void(0)" class="remove_field glyphicon glyphicon-minus-sign remove"></a></div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
+    });
+
+
 
 
     tinymce.init({

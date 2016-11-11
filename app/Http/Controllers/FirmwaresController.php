@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use view,
     DB,
     App,
-    Redirect;
+    Redirect,
+    Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
@@ -28,15 +29,18 @@ use LaravelAcl\Library\Exceptions\JacopoExceptionsInterface;
 use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Firmware;
+use App\Repositories\FirmwareRepository;
 
 class FirmwaresController extends Controller {
 
     protected $auth;
     protected $logged_user;
+    protected $firmwareRepository;
 
-    public function __construct(AuthenticateInterface $auth) {
+    public function __construct(AuthenticateInterface $auth, FirmwareRepository $firmwareRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
+        $this->firmwareRepository = $firmwareRepo;
     }
 
     public function getIndex() {
@@ -44,53 +48,58 @@ class FirmwaresController extends Controller {
         return View::make('admin.home.index')->with(['user_data' => $this->logged_user, 'info' => $info]);
     }
 
-    public function getAdminList() {
-        $info = "welcome to web page";
-        return View::make('laravel-authentication-acl::admin.firmware.list')->with(['user_data' => $this->logged_user, 'info' => $info]);
+    public function getAdminList(Request $request) {
+        $results = $this->firmwareRepository->all($request->except(['page']));
+        return View::make('laravel-authentication-acl::admin.firmware.list')->with(['user_data' => $this->logged_user, 'results' => $results, 'request' => $request]);
     }
 
     public function getNew(Request $request) {
-//        $info=Country::all();
-//        dd($info);
         $info = "welcome to web page";
         return View::make('laravel-authentication-acl::admin.firmware.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
     }
 
     public function postNew(Request $request) {
-
         $logged_user = $this->auth->getLoggedUser();
 
-        $this->validate($request, [
-            'firmware_category' => 'required', 'device' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required'
-        ]);
+        $downloadLink = implode(",", $request->download_link);
+        $request->merge(array('download_link' => $downloadLink));
+
+        $this->validate($request, ['firmware_category' => 'required', 'device' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
 
-        $countryArr = implode(",", $request->country);
-        $request->country_id = $countryArr;
-        $request->merge(array('country_id' => $countryArr));
+        if (isset($request->country) && !count($request->country) > 0) {
+            $countryArr = implode(",", $request->country);
+            $request->merge(array('country_id' => $countryArr));
+        } else {
+            $request->merge(array('country_id' => null));
+        }
+
 
         if ($request->tutorial_id == "" || empty($request->tutorial_id)) {
             $request->merge(array('tutorial_id' => NULL));
         }
 
-
         try {
             $input = $request->except(['_token', 'country']);
-            $data = new Firmware;
-            $data->fcategory_id = $input['firmware_category'];
-            $data->st_instruct = $input['starting_instruction'];
-            $data->device_id = $input['device'];
-            $data->device_model = $input['device_model'];
-            $data->device_version = $input['device_version'];
-            $data->tutorial_id = $input['tutorial_id'];
-            $data->country_id = $input['country_id'];
-            $data->d_links = $input['download_link'];
-            $data->d_sizes = $input['download_size'];
-            $data->noted = $input['noted'];
-            $data->status = $input['status'];
-            $data->featured = $input['featured'];
-            $data->user_id = $logged_user->id;
-            $data->save();
+            $data = Array();
+            $data['fcategory_id'] = $input['firmware_category'];
+            $data['st_instruct'] = $input['starting_instruction'];
+            $data['device_id'] = $input['device'];
+            $data['device_model'] = $input['device_model'];
+            $data['device_version'] = $input['device_version'];
+            $data['tutorial_id'] = $input['tutorial_id'];
+            $data['country_id'] = $input['country_id'];
+            $data['d_links'] = $input['download_link'];
+            $data['d_sizes'] = $input['download_size'];
+            $data['noted'] = $input['noted'];
+            $data['status'] = $input['status'];
+            if (isset($data->featured) && $data->featured == 1) {
+                $data['featured'] = $input['featured'];
+            } else {
+                $data['featured'] = 0;
+            }
+            $data['user_id'] = $logged_user->id;
+            $result = $this->firmwareRepository->create($data);
         } catch (JacopoExceptionsInterface $e) {
             $errors = $this->f->getErrors();
             // passing the id incase fails editing an already existing item
