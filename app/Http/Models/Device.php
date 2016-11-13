@@ -7,7 +7,7 @@ use Cartalyst\Sentry\Users\LoginRequiredException;
 
 class Device extends Model {
 
-    protected $fillable = ['name', 'type', 'image'];
+    protected $fillable = ['name', 'image', 'introductions'];
     
         public function firmware() {
         return $this->hasMany(Template::class);

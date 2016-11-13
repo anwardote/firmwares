@@ -12,6 +12,8 @@ use LaravelAcl\Authentication\Repository\SentryGroupRepository;
 use App\Repositories\CountryRepository;
 use App\Repositories\FcategoryRepository;
 use App\Repositories\DeviceRepository;
+use App\Repositories\DriverNameRepository;
+use App\Repositories\DriverTypeRepository;
 
 class FormHelper {
 
@@ -27,13 +29,17 @@ class FormHelper {
     protected $repository_countries;
     protected $repository_fcategories;
     protected $repository_device;
+    protected $repository_driverName;
+    protected $repository_driverType;
 
-    public function __construct(PermissionRepository $rp = null, SentryGroupRepository $rg = null, CountryRepository $cr = null, FcategoryRepository $fcr = null, DeviceRepository $dr = null) {
+    public function __construct(PermissionRepository $rp = null, SentryGroupRepository $rg = null, CountryRepository $cr = null, FcategoryRepository $fcr = null, DeviceRepository $dr = null, DriverNameRepository $dnr = null, DriverTypeRepository $dtr = null) {
         $this->repository_permission = $rp ? $rp : new PermissionRepository();
         $this->repository_groups = $rg ? $rg : new SentryGroupRepository();
         $this->repository_countries = $cr ? $cr : new CountryRepository();
         $this->repository_fcategories = $fcr ? $fcr : new FcategoryRepository();
         $this->repository_device = $dr ? $dr : new DeviceRepository();
+        $this->repository_driverName = $dnr ? $dnr : new DriverNameRepository();
+        $this->repository_driverType = $dtr ? $dtr : new DriverTypeRepository();
     }
 
     public function getSelectValues($repo_name, $key_value, $value_value) {
@@ -72,6 +78,10 @@ class FormHelper {
         return $this->getSelectValues("repository_countries", 'id', 'country_name');
     }
 
+    public function getSelectDriverNameOutputValues() {
+        return $this->getSelectValues("repository_driverName", 'id', 'name');
+    }
+
     public function getSelectfcategoryOutputValues() {
         return $this->getSelectValues("repository_fcategories", 'id', 'title');
     }
@@ -90,6 +100,23 @@ class FormHelper {
             $array_values[$key] = $val;
 
         return $array_values;
+    }
+
+    public function getSelectToolSupportOutputValues() {
+        return $this->getSelectTool_supportValues();
+    }
+    
+        public function getSelectTool_supportValues() {
+        $tool_support_output_array = array("ALL VERSIONS" => "All Versions", "NA" => "NA");
+        foreach ($tool_support_output_array as $key => $val)
+            $array_values[$key] = $val;
+
+        return $array_values;
+    }
+    
+
+    public function getSelectdriverTypeOutputValues() {
+        return $this->getSelectValues("repository_driverType", 'id', 'name');
     }
 
 }

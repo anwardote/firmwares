@@ -14,15 +14,45 @@ return [
             "name" => "Dashboard",
             "route" => "dashboard",
             "link" => '/admin/users/dashboard',
-            "permissions" => ["_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
+            "permissions" => ["_group-editor", "_permission-editor", "_superadmin"]
         ],
-        
         [
             "name" => "Firmware",
             "route" => "firmware.list",
             "link" => '/admin/firmware/list',
-            "permissions" => ["_firmware-editor","_superadmin", "_user-editor", "_group-editor", "_permission-editor"]
+            "permissions" => ["_firmware-editor", "_superadmin"]
+        ],
+        [
+            "name" => "Driver",
+            "route" => "driver.list",
+            "link" => '/admin/driver/list',
+            "permissions" => ["_driver-editor", "_superadmin"]
+        ],
+        [
+            "name" => "Tool",
+            "route" => "tool.list",
+            "link" => '/admin/tool/list',
+            "permissions" => ["_tool-editor", "_superadmin"]
+        ],
+        [
+            "name" => "Tutorial",
+            "route" => "tutorial.list",
+            "link" => '/admin/tutorial/list',
+            "permissions" => ["_tutorial-editor", "_superadmin"]
+        ],
+        [
+            "name" => "Setup",
+            "route" => "device.list",
+            "link" => '/admin/setup/device/list',
+            "permissions" => ["_setup", "_superadmin"]
+        ],
+        [
+            "name" => "CMS",
+            "route" => "device.list",
+            "link" => '/admin/cms/device/list',
+            "permissions" => ["_cms", "_superadmin"]
         ],        
+        
         [
             /*
              * the name of the link: you will see it in the admin menu panel.

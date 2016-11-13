@@ -28,21 +28,14 @@ class DeviceRepository {
      * @override
      */
     public function create(array $input) {
-        $data = array(
-            "name" => $input["name"],
-            "image" => $input["image"],
-            "type" => $input["type"],
-        );
 
-//        try {            
-//            $template = new Campaign;
-//            $template->create($data);
-//        } catch (CartaUserExists $e) {
-//            throw new NotFoundException;
-//        }
-        $Device = new Device();
-        $Device->create($data);
-        return $Device;
+        try {
+            $device = new Device();
+            $device->create($input);
+        } catch (CartaUserExists $e) {
+            throw new NotFoundException;
+        }
+        return $device;
     }
 
     /**
@@ -70,6 +63,7 @@ class DeviceRepository {
 
         $q = new Device();
         $per_page = Config::get('acl_base.countries_per_page');
+       // $q = $this->applySearchFilters($search_filters, $q);
         return $q->paginate($per_page);
     }
 
@@ -105,12 +99,14 @@ class DeviceRepository {
      */
     public function find($id) {
         try {
-            $Device = Device::find($id);
+           $device = Device::find($id);
         } catch (GroupNotFoundException $e) {
             throw new NotFoundException;
         }
 
-        return $Device;
+        return $device;
     }
+    
+    
 
 }

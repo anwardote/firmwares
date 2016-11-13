@@ -46,14 +46,14 @@ Admin area: add snippets
                         'class' => '', 
                         'files' => true)) !!}
                         <div class="form-group">
-                            {!! Form::label('firmware_category','Select Firmware Category: *') !!}
-                            {!! Form::select('firmware_category', $fcategory_output_values, '', ["class"=>"form-control"]) !!}
-                            <span class="text-danger">{!! $errors->first('firmware_category') !!}</span>
+                            {!! Form::label('fcategory_id','Select Firmware Category: *') !!}
+                            {!! Form::select('fcategory_id', $fcategory_output_values, '', ["class"=>"form-control"]) !!}
+                            <span class="text-danger">{!! $errors->first('fcategory_id') !!}</span>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('device','Select Supported Device: *') !!}
-                            {!! Form::select('device', $device_output_values, '', ["class"=>"form-control permission-select chosen-select"]) !!}
-                            <span class="text-danger">{!! $errors->first('device') !!}</span>
+                            {!! Form::label('device_id','Select Supported Device: *') !!}
+                            {!! Form::select('device_id', $device_output_values, '', ["class"=>"form-control permission-select chosen-select"]) !!}
+                            <span class="text-danger">{!! $errors->first('device_id') !!}</span>
                         </div>
 
                         <div class="form-group">
@@ -73,29 +73,46 @@ Admin area: add snippets
                             {!! Form::select('country[]', $country_output_values, '', ["class"=>"form-control permission-select chosen-select", "id"=>'country', 'multiple'=>'multiple']) !!}
                             <span class="text-danger">{!! $errors->first('country') !!}</span>
                         </div>
-
                         <div class="form-group input_fields_wrap">
                             {!! Form::label('download_link','Download Links:') !!}
-                            {!! Form::text('download_link[]', null, [ 'class' => 'form-control', 'id'=>'download_link','placeholder' => 'Download links here.']) !!}
-                        </div>  
+                            <?php
+                            $downloadArr = explode(',', old('download_link'));
+                            $l = (count($downloadArr));
+                            $i = 0;
+                            ?>
+                            @if($l > 1)
+                            @foreach($downloadArr as $v)
+                            <?php $i++; ?>
+                            <div style="margin-top:10px">
+                                @if($i==1)
+                                <input type="text" name="download_link[]" value="{{ $v }}" class="form-control" placeholder="More Download links here." required="required"/>
+                                @else
+                                <input type="text" name="download_link[]" value="{{ $v }}" class="form-control" placeholder="More Download links here." required="required"/><a href="javascript:void(0)" class="remove_field glyphicon glyphicon-minus-sign remove"></a>
+                                @endif
+                            </div>
+                            @endforeach
+                            @else
+                            {!! Form::text('download_link[]', null, [ 'class' => 'form-control', 'placeholder' => 'Download links here.']) !!}
+                            @endif
+                        </div>
                         <span class="text-danger">{!! $errors->first('download_link') !!}</span>
                         <a href="javascript:void(0)" class="addMore add_field_button">Add More</a>
-                        
+
                         <div class="form-group">
-                            {!! Form::label('download_size','Download size:') !!}
-                            {!! Form::text('download_size', null, [ 'class' => 'form-control', 'placeholder' => 'Download size here.']) !!}
-                            <span class="text-danger">{!! $errors->first('download_size') !!}</span>
+                            {!! Form::label('d_sizes','Download size:') !!}
+                            {!! Form::text('d_sizes', null, [ 'class' => 'form-control', 'placeholder' => 'Download size here.']) !!}
+                            <span class="text-danger">{!! $errors->first('d_sizes') !!}</span>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('tutorial_id','Select supported tutorial: *') !!}
+                            {!! Form::label('tutorial_id','Supported tutorial: *') !!}
                             {!! Form::number('tutorial_id', null, [ 'class' => 'form-control', 'placeholder' => 'Tutorial ID here.']) !!}
                             <span class="text-danger">{!! $errors->first('tutorial_id') !!}</span>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('starting_instruction','Starting Instruction(if any):') !!}
-                            {!! Form::textarea('starting_instruction', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}
+                            {!! Form::label('st_instruct','Starting Instruction(if any):') !!}
+                            {!! Form::textarea('st_instruct', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}
                             <span class="text-danger">{!! $errors->first('st_instruct') !!}</span>
                         </div>
 

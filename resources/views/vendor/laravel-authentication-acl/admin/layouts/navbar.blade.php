@@ -32,8 +32,8 @@ if ($user) {
 </style>
 <div id="header">
     <div class="container">
-        <a href="/" id="logo">
-            {{ HTML::image('images/website-logo.png') }}
+        <a href="/" id="logo" >
+            {{ HTML::image('images/website-logo.png', 'alt', array( 'class' => 'image-responsive-width image-responsive-height' )) }}
         </a>
         <div id="hdrRight" class="right">
 
@@ -59,7 +59,7 @@ if ($user) {
             <div class="container">
                 <div id="mobileMenuBtn"><i class="fa fa-bars"></i></div>
                 <div id="navigation-container">
-                    <div id="navMiniMobile"> <span> | <a href="{!! URL::route('users.selfprofile.edit') !!}">My Account</a><span> | </span><a href="#">Contact Us</a><span> | </span><a href="{!! URL::route('user.logout') !!}">Sign Out</a></div>
+                    <div id="navMiniMobile"> <a href="{!! URL::route('users.selfprofile.edit') !!}">My Account</a><span> | </span><a href="{!! URL::route('user.logout') !!}">Sign Out</a></div>
                     <ul class="menu">
                         <li <?php if (isset($current_route) && $current_route == "home"): ?>class="active"<?php endif; ?>><a href="/">Home</a><li>       
                         <li <?php if (isset($current_route) && $current_route == "howtouse"): ?>class="active" <?php endif; ?>><a href="#">Tutorials</a><li>       

@@ -126,28 +126,28 @@ body{font-family: "GothamNarrow-Book";}
 .banner {margin: -40px 0 0;padding: 100px 0;border-bottom: 1px solid #aaa;}
 .banner h1{font-family: GothamBook-Regular;font-size: 56px; color:#d0112b;margin-bottom:20px;}
 .banner p{font-family: "GothamNarrow-Book";font-size:20px; color:#53565a;max-width:480px;}
- #howtouse-carousel .c-txt-left {height: 250px;overflow:hidden;}
- #howtouse-top{padding:95px 40px 55px;background:#f4f4f4; margin: -40px 0 0;}
-    #how-to-use h1 {color: #d0112b;font-family: "GothamNarrow-Book";font-size: 42px; margin: 0 0 20px;line-height:43px;}
-    #how-to-use h1 span.ash{color: #53565a;}
-    #how-to-use p {color: #53565a;font-family: "GothamNarrow-Book";font-size: 19px;}
-    .carousel-inner item{min-height:420px;}
-    .how-to-use-bottom h2{margin: 30px 0 20px;padding: 0;font-family:'Gotham-Book';font-size: 42px;color: #262626;text-align:left;height:auto;}
-    .how-use-info { margin: 10px 0 30px;}
-    .how-use-info img{float: left; margin-bottom: 20px;}
-    .how-use-info > h2 {float: left;margin: 10px;color: #d0112b;}
-    #how-to-use p {color: #53565a;font-family: "GothamNarrow-Book";font-size: 19px;clear:both;}
-    .btn.btn-get-started {background: #d0112b;color: #fff;display: block;font-family: "Gotham-Book";font-size: 20px; margin: 20px auto 55px;max-width: 400px;padding: 10px 0;text-align: center;text-transform: uppercase;}
-    #howtouse-carousel .carousel-indicators li {background-color: gray;height: 16px;margin: 1px;width: 16px;}    
-    #howtouse-carousel .carousel-indicators .active {background-color: #333333;height: 16px;margin: 1px;width: 16px;}
-    #howtouse-carousel .carousel-indicators li:hover{background-color: #333333;}
-    @media only screen and (max-width : 450px) {
-        .btn.btn-get-started ,#how-to-use p {font-size: 16px;}
-        .how-to-use-bottom h2{ font-size: 28px;}
-        #how-to-use h1{font-size: 30px;line-height: 32px;}
-        #howtouse-top{padding: 30px;}
-        #howtouse-carousel .c-txt-left{height:auto;margin-bottom:20px;}
-    }
+#howtouse-carousel .c-txt-left {height: 250px;overflow:hidden;}
+#howtouse-top{padding:95px 40px 55px;background:#f4f4f4; margin: -40px 0 0;}
+#how-to-use h1 {color: #d0112b;font-family: "GothamNarrow-Book";font-size: 42px; margin: 0 0 20px;line-height:43px;}
+#how-to-use h1 span.ash{color: #53565a;}
+#how-to-use p {color: #53565a;font-family: "GothamNarrow-Book";font-size: 19px;}
+.carousel-inner item{min-height:420px;}
+.how-to-use-bottom h2{margin: 30px 0 20px;padding: 0;font-family:'Gotham-Book';font-size: 42px;color: #262626;text-align:left;height:auto;}
+.how-use-info { margin: 10px 0 30px;}
+.how-use-info img{float: left; margin-bottom: 20px;}
+.how-use-info > h2 {float: left;margin: 10px;color: #d0112b;}
+#how-to-use p {color: #53565a;font-family: "GothamNarrow-Book";font-size: 19px;clear:both;}
+.btn.btn-get-started {background: #d0112b;color: #fff;display: block;font-family: "Gotham-Book";font-size: 20px; margin: 20px auto 55px;max-width: 400px;padding: 10px 0;text-align: center;text-transform: uppercase;}
+#howtouse-carousel .carousel-indicators li {background-color: gray;height: 16px;margin: 1px;width: 16px;}    
+#howtouse-carousel .carousel-indicators .active {background-color: #333333;height: 16px;margin: 1px;width: 16px;}
+#howtouse-carousel .carousel-indicators li:hover{background-color: #333333;}
+@media only screen and (max-width : 450px) {
+    .btn.btn-get-started ,#how-to-use p {font-size: 16px;}
+    .how-to-use-bottom h2{ font-size: 28px;}
+    #how-to-use h1{font-size: 30px;line-height: 32px;}
+    #howtouse-top{padding: 30px;}
+    #howtouse-carousel .c-txt-left{height:auto;margin-bottom:20px;}
+}
 /*---------------end----------------*/
 
 
@@ -297,7 +297,7 @@ body{font-family: "GothamNarrow-Book";}
 #companyProfile ul a.add-contact {top: 10px;position: relative;}
 #companyProfile .tab-content{clear: both;padding:30px 0;}
 #companyProfile .form-group input[type="radio"], #companyProfile .form-group input[type="checkbox"] {
-margin:0 10px 0 0;display: inline-block;width: auto;border: none;box-shadow: none;}
+    margin:0 10px 0 0;display: inline-block;width: auto;border: none;box-shadow: none;}
 #companyProfile a {
     font-size: 14px;
     top: 0;
@@ -306,9 +306,9 @@ margin:0 10px 0 0;display: inline-block;width: auto;border: none;box-shadow: non
     color: #000;
     text-decoration: none;
 }
-#firmwareForm a.addMore {
+#firmwareForm .row a.addMore {
     background: #000 none repeat scroll 0 0;
-    color: #fff;
+    color: #fff !important;
     display: block;
     max-width: 100px;
     padding: 10px;
@@ -537,6 +537,10 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 
 @media only screen and (max-width : 660px) {
+    #header #logo img {
+        height:60px;
+    }
+
     #header {
         background-color:#ffffff;
         height:122px;
@@ -562,7 +566,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
         display:inline-block;
     }
     #header #navWrap {
-        height:5px;
+        height:7px;
     }
     #header #mobileMenuBtn {
         color:#333333;
@@ -598,11 +602,16 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 
 @media only screen and (max-width : 560px) {
+
+    #header #logo img {
+        height:40px;
+    }
+
     #header #navMiniMobile {
         display:block;
     }
     #header #addtlLinks {
-        display:none;
+        /*        display:none;*/
     }
     #header #hdrRight {
         padding-top:13px;
@@ -616,7 +625,9 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 }
 @media only screen and (max-width : 545px) {
-
+    #header #logo img {
+        height:35px;
+    }
 
     h2 {
         line-height:normal;
@@ -639,6 +650,10 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 @media only screen and (max-width : 475px) {
 
+    #header #logo img {
+        height:30px;
+    }
+
     h1#pageTitle {
         font-size:34px;
         text-align:center;
@@ -652,5 +667,33 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 @media only screen and (max-width : 460px) {
     h2 {font-size:30px;}
 
+}
+
+@media only screen and (max-width : 360px) {
+    #header #logo img {
+        height:25px;
+    }
+    #header #addtlLinks {
+        display: block;
+        padding-right: 50px;
+    }
+
+    #header #hdrRight {
+        padding-top:0px;
+        float:left;
+        padding-left:30px;
+    }
+    
+        #navWrap{
+height: 10px;
+background: gray;
+    }
+}
+
+@media only screen and (max-width : 260px) {
+
+    #header #logo img {
+        height:20px;
+    }
 }
 

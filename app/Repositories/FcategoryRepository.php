@@ -67,7 +67,7 @@ class FcategoryRepository {
     public function all(array $search_filters = []) {
 
         $q = new Fcategory();
-        $per_page = 10;
+        $per_page = Config::get('acl_base.list_per_page');
         return $q->paginate($per_page);
     }
 

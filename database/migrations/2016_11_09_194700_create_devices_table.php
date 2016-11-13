@@ -15,8 +15,8 @@ class CreateDevicesTable extends Migration {
         Schema::create('devices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->text('introductions')->nullable();
             $table->string('image')->default('images/default_mobile.png');
-            $table->enum('type', ['ANDROID', 'SYMBIAN', 'JAR', 'OTHER'])->default('ANDROID');
             $table->timestamps();
         });
     }

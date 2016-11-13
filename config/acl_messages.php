@@ -53,8 +53,37 @@ return [
                 // permission
                 "permission_permission_edit_success"   => "Permission edited with success.",
                 "permission_permission_delete_success" => "Permission deleted with success.",
-                // reminder
-
+                // firmware    
+                "firmware_new_success"                  => "New firmware added with success.",
+                "firmware_edit_success"                 => "Firmware edited with success.",
+                "firmware_delete_success"               => "Firmware deleted with success.",
+                // driver    
+                "driver_new_success"                  => "New driver added with success.",
+                "driver_edit_success"                 => "Driver edited with success.",
+                "driver_delete_success"               => "Driver deleted with success.",
+                 // driver
+                "tool_new_success"                    => "New tool added with success.",
+                "tool_edit_success"                   => "Tool type edited with success.",
+                "tool_delete_success"                 => "Tool deleted with success.",  
+                
+                // tutorial    
+                "tutorial_new_success"                  => "New Tutorial added with success.",
+                "tutorial_edit_success"                 => "Tutorial edited with success.",
+                "tutorial_delete_success"               => "Tutorial deleted with success.",
+               // device
+                "device_new_success"                    => "New device added with success.",
+                "device_edit_success"                   => "Device edited with success.",
+                "device_delete_success"                 => "Device deleted with success.",
+                
+                 // driver name
+                "driver-name_new_success"                    => "New Driver name added with success.",
+                "driver-name_edit_success"                   => "Driver name edited with success.",
+                "driver-name_delete_success"                 => "Driver name deleted with success.",
+                                 
+                // driver type
+                "driver-type_new_success"                    => "New Driver type added with success.",
+                "driver-type_edit_success"                   => "Driver type edited with success.",
+                "driver-type_delete_success"                 => "Driver type deleted with success.", 
             ],
             /*
              * User error messages

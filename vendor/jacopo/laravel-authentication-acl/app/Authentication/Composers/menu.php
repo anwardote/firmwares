@@ -99,10 +99,97 @@ View::composer(['laravel-authentication-acl::admin.firmware.*'], function ($view
             'url' => URL::route('firmware.list'),
             "icon" => '<i class="fa fa-th-list"></i>'
         ],
-        
         " Firmware Add" => [
             'url' => URL::route('firmware.new'),
             "icon" => '<i class="fa fa-plus-circle"></i>'
-        ]        
+        ]
+    ]);
+});
+
+
+
+/**
+ *  Driver sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.driver.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Driver list" => [
+            'url' => URL::route('driver.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Driver Add" => [
+            'url' => URL::route('driver.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});
+
+/**
+ *  Tool sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.tool.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Tool list" => [
+            'url' => URL::route('tool.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Tool Add" => [
+            'url' => URL::route('tool.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});
+
+
+/**
+ *  Tutorial sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.tutorial.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Tutorial list" => [
+            'url' => URL::route('tutorial.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Tutorial Add" => [
+            'url' => URL::route('tutorial.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});
+
+
+
+/**
+ *  Setup sidebar
+ */
+View::composer([
+    'laravel-authentication-acl::admin.device.*',
+    'laravel-authentication-acl::admin.driver-name.*',
+    'laravel-authentication-acl::admin.driver-type.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Device list" => [
+            'url' => URL::route('device.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Device Add" => [
+            'url' => URL::route('device.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ],
+        " Driver Name list" => [
+            'url' => URL::route('driver-name.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Driver Name Add" => [
+            'url' => URL::route('driver-name.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ],
+        " Driver Type list" => [
+            'url' => URL::route('driver-type.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Driver Type Add" => [
+            'url' => URL::route('driver-type.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
     ]);
 });
