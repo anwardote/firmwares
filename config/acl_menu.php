@@ -48,8 +48,8 @@ return [
         ],
         [
             "name" => "CMS",
-            "route" => "device.list",
-            "link" => '/admin/cms/device/list',
+            "route" => "post.list",
+            "link" => '/admin/cms/post/list',
             "permissions" => ["_cms", "_superadmin"]
         ],        
         

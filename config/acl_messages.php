@@ -84,6 +84,18 @@ return [
                 "driver-type_new_success"                    => "New Driver type added with success.",
                 "driver-type_edit_success"                   => "Driver type edited with success.",
                 "driver-type_delete_success"                 => "Driver type deleted with success.", 
+                
+                // CMS Page
+                "cms_page_new_success"                    => "New CMS Page added with success.",
+                "cms_page_edit_success"                   => "CMS Page edited with success.",
+                "cms_page_delete_success"                 => "CMS Page deleted with success.", 
+                
+                // CMS Post
+                "cms_post_new_success"                    => "New CMS Post added with success.",
+                "cms_post_edit_success"                   => "CMS Post edited with success.",
+                "cms_post_delete_success"                 => "CMS Post deleted with success.", 
+                
+                
             ],
             /*
              * User error messages

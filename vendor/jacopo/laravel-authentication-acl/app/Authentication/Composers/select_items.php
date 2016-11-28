@@ -122,3 +122,20 @@ View::composer([
     $values_type_output = $fh->getSelectdriverTypeOutputValues();
     $view->with('driver_type_values', $values_type_output);
 });
+
+
+/**
+ * CMS
+ * Category Select Value
+ */
+View::composer([
+    'laravel-authentication-acl::admin.cms.category.new',
+    'laravel-authentication-acl::admin.cms.category.edit',
+    'laravel-authentication-acl::admin.cms.category.list',
+    'laravel-authentication-acl::admin.cms.post.new',
+    'laravel-authentication-acl::admin.cms.post.edit'
+        ], function ($view) {
+    $fh = new FormHelper();
+    $values_cms_category_output = $fh->getSelectCmsCategoryOutputValues();
+    $view->with('cms_category_values', $values_cms_category_output);
+});

@@ -14,6 +14,7 @@ use App\Repositories\FcategoryRepository;
 use App\Repositories\DeviceRepository;
 use App\Repositories\DriverNameRepository;
 use App\Repositories\DriverTypeRepository;
+use App\Repositories\CmsCategoryRepository;
 
 class FormHelper {
 
@@ -31,8 +32,9 @@ class FormHelper {
     protected $repository_device;
     protected $repository_driverName;
     protected $repository_driverType;
+    protected $repository_cmsCategory;
 
-    public function __construct(PermissionRepository $rp = null, SentryGroupRepository $rg = null, CountryRepository $cr = null, FcategoryRepository $fcr = null, DeviceRepository $dr = null, DriverNameRepository $dnr = null, DriverTypeRepository $dtr = null) {
+    public function __construct(PermissionRepository $rp = null, SentryGroupRepository $rg = null, CountryRepository $cr = null, FcategoryRepository $fcr = null, DeviceRepository $dr = null, DriverNameRepository $dnr = null, DriverTypeRepository $dtr = null, CmsCategoryRepository $cmsCategory = null) {
         $this->repository_permission = $rp ? $rp : new PermissionRepository();
         $this->repository_groups = $rg ? $rg : new SentryGroupRepository();
         $this->repository_countries = $cr ? $cr : new CountryRepository();
@@ -40,6 +42,7 @@ class FormHelper {
         $this->repository_device = $dr ? $dr : new DeviceRepository();
         $this->repository_driverName = $dnr ? $dnr : new DriverNameRepository();
         $this->repository_driverType = $dtr ? $dtr : new DriverTypeRepository();
+        $this->repository_cmsCategory = $cmsCategory ? $cmsCategory : new CmsCategoryRepository();
     }
 
     public function getSelectValues($repo_name, $key_value, $value_value) {
@@ -105,18 +108,21 @@ class FormHelper {
     public function getSelectToolSupportOutputValues() {
         return $this->getSelectTool_supportValues();
     }
-    
-        public function getSelectTool_supportValues() {
+
+    public function getSelectTool_supportValues() {
         $tool_support_output_array = array("ALL VERSIONS" => "All Versions", "NA" => "NA");
         foreach ($tool_support_output_array as $key => $val)
             $array_values[$key] = $val;
 
         return $array_values;
     }
-    
 
     public function getSelectdriverTypeOutputValues() {
         return $this->getSelectValues("repository_driverType", 'id', 'name');
+    }
+
+    public function getSelectCmsCategoryOutputValues() {
+        return $this->getSelectValues("repository_cmsCategory", 'id', 'name');
     }
 
 }

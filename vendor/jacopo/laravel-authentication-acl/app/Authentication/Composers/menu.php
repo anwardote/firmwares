@@ -193,3 +193,42 @@ View::composer([
         ]
     ]);
 });
+
+
+
+
+
+/**
+ *  CMS sidebar
+ */
+View::composer([
+    'laravel-authentication-acl::admin.cms.category.*', 
+    'laravel-authentication-acl::admin.cms.page.*',
+    'laravel-authentication-acl::admin.cms.post.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Post list" => [
+            'url' => URL::route('post.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Post Add" => [
+            'url' => URL::route('post.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ],
+        " Category list" => [
+            'url' => URL::route('category.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Category Add" => [
+            'url' => URL::route('category.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ],
+        " Page list" => [
+            'url' => URL::route('page.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Page Add" => [
+            'url' => URL::route('page.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});

@@ -179,7 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         LaravelAcl\Authentication\AuthenticationServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
-        
+        Cviebrock\EloquentSluggable\ServiceProvider::class
     ],
 
     /*
@@ -227,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Str'       => Illuminate\Support\Str::class,
 
     ],
 

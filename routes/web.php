@@ -268,3 +268,107 @@ Route::group(['prefix' => 'admin/setup'], function () {
         'as' => 'driver-type.delete',
         'uses' => 'DriverTypesController@delete']);
 });
+
+
+
+Route::group(['prefix' => 'admin/cms'], function () {
+
+    /*Post CMS */
+    Route::get('/post/list', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'post.list',
+        'uses' => 'PostsController@getList']);
+
+    Route::get('/post/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'post.new',
+        'uses' => 'PostsController@getNew']);
+
+    Route::post('/post/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'post.new',
+        'uses' => 'PostsController@postNew']);
+
+    Route::get('/post/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'post.edit',
+        'uses' => 'PostsController@getUpdate']);
+
+    Route::post('/post/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'post.edit',
+        'uses' => 'PostsController@postUpdate']);
+
+    Route::get('/post/delete', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
+        'as' => 'post.delete',
+        'uses' => 'PostsController@delete']);
+    
+    
+    
+    
+     /*Page CMS */
+    Route::get('/page/list', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'page.list',
+        'uses' => 'PagesController@getList']);
+
+    Route::get('/page/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'page.new',
+        'uses' => 'PagesController@getNew']);
+
+    Route::post('/page/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'page.new',
+        'uses' => 'PagesController@postNew']);
+
+    Route::get('/page/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'page.edit',
+        'uses' => 'PagesController@getUpdate']);
+
+    Route::post('/page/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'page.edit',
+        'uses' => 'PagesController@postUpdate']);
+
+    Route::get('/page/delete', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
+        'as' => 'page.delete',
+        'uses' => 'PagesController@delete']);
+    
+    
+     /*Category CMS */
+    Route::get('/category/list', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'category.list',
+        'uses' => 'CategoriesController@getList']);
+
+    Route::get('/category/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'category.new',
+        'uses' => 'CategoriesController@getNew']);
+
+    Route::post('/category/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'category.new',
+        'uses' => 'CategoriesController@postNew']);
+
+    Route::get('/category/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'category.edit',
+        'uses' => 'CategoriesController@getUpdate']);
+
+    Route::post('/category/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
+        'as' => 'category.edit',
+        'uses' => 'CategoriesController@postUpdate']);
+
+    Route::get('/category/delete', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
+        'as' => 'category.delete',
+        'uses' => 'CategoriesController@delete']);
+    
+    
+});

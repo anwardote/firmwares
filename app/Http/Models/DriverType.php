@@ -9,8 +9,8 @@ class DriverType extends Model {
 
     protected $fillable = ['name'];
     
-    public function driverType() {
-        return $this->hasMany(Driver::class('driver_type'));
-    }
+//    public function driverType() {
+//        return $this->hasMany(Driver::class('driver_type'));
+//    }
 
 }
