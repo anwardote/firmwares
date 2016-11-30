@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://firmware.dev'),
+    'url' => env('APP_URL', 'http://firmware.mse24.com'),
 
     /*
     |--------------------------------------------------------------------------

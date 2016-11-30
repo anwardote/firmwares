@@ -88,6 +88,9 @@ class UserController extends Controller {
         try {
             $user = $this->f->process($request->all());
             $this->profile_repository->attachEmptyProfile($user);
+            if (empty($id)) {
+                $this->sendNotification($request->all());
+            }
         } catch (JacopoExceptionsInterface $e) {
             DbHelper::rollback();
             $errors = $this->f->getErrors();
@@ -306,6 +309,16 @@ class UserController extends Controller {
     public function refreshCaptcha() {
         return View::make('laravel-authentication-acl::client.auth.captcha-image')
                         ->with(['captcha' => App::make('captcha_validator')]);
+    }
+
+    private function sendNotification($requests) {
+        $userModel = new User();
+        $userInfo = $userModel->where('email', $requests['email'])->get();
+        $userInfo = $userInfo[0];
+        Mail::send('laravel-authentication-acl::admin.mail.registration-activated-client', ['email' => $requests['email'], 'password' => $requests['password'], '_token' => $userInfo['user_token']], function ($message) use ($requests) {
+            $message->from('hello@app.com', Config::get('acl_base.app_name'));
+            $message->to($requests['email'], $requests['email'])->subject('Your account has been created successfully!');
+        });
     }
 
 }
