@@ -318,7 +318,7 @@ class UserController extends Controller {
         $userInfo = $userModel->where('email', $requests['email'])->get();
         $userInfo = $userInfo[0];
         Mail::send('laravel-authentication-acl::admin.mail.registration-activated-client', ['email' => $requests['email'], 'password' => $requests['password'], '_token' => $userInfo['user_token']], function ($message) use ($requests) {
-            $message->from('hello@app.com', Config::get('acl_base.app_name'));
+            $message->from(Config::get('mail.from.address'), Config::get('acl_base.app_name'));
             $message->to($requests['email'], $requests['email'])->subject('Your account has been created successfully!');
         });
     }

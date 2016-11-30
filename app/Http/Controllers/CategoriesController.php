@@ -53,7 +53,7 @@ class CategoriesController extends Controller {
     }
 
     public function postNew(Request $request) {
-        $this->validate($request, ['name' => 'required']);
+        $this->validate($request, ['name' => 'required|unique:cms_categories']);
         try {
             $request->merge(array('name' => strtolower($request->name)));
             $input = $request->except(['_token']);

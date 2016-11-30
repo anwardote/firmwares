@@ -11,14 +11,16 @@ use App\Http\Models\CmsPage;
 use Config,
     Event;
 
-class CmsPageRepository {
+class CmsPageRepository
+{
 
     /**
      * Sentry instance
      * @var
      */
-    public function __construct() {
-        
+    public function __construct()
+    {
+
     }
 
     /**
@@ -27,11 +29,12 @@ class CmsPageRepository {
      * @return mixed
      * @override
      */
-    public function create(array $input) {
+    public function create(array $input)
+    {
 
         try {
             $q = new CmsPage();
-            $q=$q->create($input);
+            $q = $q->create($input);
         } catch (CartaUserExists $e) {
             throw new NotFoundException;
         }
@@ -45,7 +48,8 @@ class CmsPageRepository {
      * @param array $data
      * @return mixed
      */
-    public function update($id, array $data) {
+    public function update($id, array $data)
+    {
         $obj = $this->find($id);
         //  Event::fire('repository.updating', [$obj]);
         $obj->update($data);
@@ -59,11 +63,12 @@ class CmsPageRepository {
      * @param array $search_filters
      * @return mixed
      */
-    public function all(array $search_filters = []) {
+    public function all(array $search_filters = [])
+    {
 
         $q = new CmsPage();
         $per_page = Config::get('acl_base.list_per_page');
-       // $q = $this->applySearchFilters($search_filters, $q);
+        // $q = $this->applySearchFilters($search_filters, $q);
         return $q->paginate($per_page);
     }
 
@@ -72,7 +77,8 @@ class CmsPageRepository {
      * @param       $q
      * @return mixed
      */
-    protected function applySearchFilters(array $search_filters, $q) {
+    protected function applySearchFilters(array $search_filters, $q)
+    {
         if (isset($search_filters['name']) && $search_filters['name'] !== '')
             $q = $q->where('name', 'LIKE', "%{$search_filters['name']}%");
         return $q;
@@ -84,7 +90,8 @@ class CmsPageRepository {
      * @param $id
      * @return mixed
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $obj = $this->find($id);
         //   Event::fire('repository.deleting', [$obj]);
         return $obj->delete();
@@ -97,15 +104,26 @@ class CmsPageRepository {
      * @return mixed
      * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
      */
-    public function find($id) {
+    public function find($id)
+    {
         try {
-           $q = CmsPage::find($id);
+            $q = CmsPage::find($id);
         } catch (GroupNotFoundException $e) {
             throw new NotFoundException;
         }
         return $q;
     }
-    
-    
+
+    public function findBySlugOrId($page)
+    {
+        $pageInstance = CmsPage::where('template', 'home')->first()->get();
+        $pageArr = $pageInstance[0]['attributes'];
+        $ExtrasArray = json_decode($pageArr['extras'], true);
+        unset($pageArr['extras']);
+        $page = array_merge($pageArr, $ExtrasArray);
+        $page=(Object) $page;
+        return $page;
+    }
+
 
 }

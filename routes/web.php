@@ -15,7 +15,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/', [
         'middleware' => array('can_see'),
         'as' => 'home',
-        'uses' => 'HomeController@getIndex']);
+        'uses' => 'CMSViewController@getHomePage']);
 
     Route::get('/tutorials', [
         'middleware' => array('can_see'),

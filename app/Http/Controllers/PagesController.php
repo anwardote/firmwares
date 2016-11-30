@@ -69,7 +69,7 @@ class PagesController extends Controller
     public function postNew(Request $request)
     {
         $this->validate($request,
-            ['name' => 'required', 'template' => 'required', 'title' => 'required', 'banner_type' => 'required']);
+            ['name' => 'required', 'template' => 'required|unique:cms_pages', 'title' => 'required', 'banner_type' => 'required']);
 
         $fields = $this->getField($request->except(['_token', 'redirect_after_save', 'id']));
         $fields['slug'] = $this->getNewSlug($fields['title'], $fields['slug']);
