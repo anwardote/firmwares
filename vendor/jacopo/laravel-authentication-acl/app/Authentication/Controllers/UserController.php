@@ -26,7 +26,8 @@ use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use View,
     Redirect,
     App,
-    Config;
+    Config,
+    Mail;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -86,6 +87,7 @@ class UserController extends Controller {
 
         DbHelper::startTransaction();
         try {
+            $request->merge(array('user_token' => $request->_token));
             $user = $this->f->process($request->all());
             $this->profile_repository->attachEmptyProfile($user);
             if (empty($id)) {

@@ -44,17 +44,16 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
     public function create(array $input)
     {
         $data = array(
-                "email"     => $input["email"],
-                "password"  => $input["password"],
-                "activated" => $input["activated"],
-                "banned"    => isset($input["banned"]) ? $input["banned"] : 0
+            "email" => $input["email"],
+            "password" => $input["password"],
+            "activated" => $input["activated"],
+            "banned" => isset($input["banned"]) ? $input["banned"] : 0,
+            "user_token" => isset($input["user_token"]) ? $input["user_token"] : ""
         );
 
-        try
-        {
+        try {
             $user = $this->sentry->createUser($data);
-        } catch(CartaUserExists $e)
-        {
+        } catch (CartaUserExists $e) {
             throw new UserExistsException;
         }
 
@@ -97,7 +96,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      */
     protected function ClearEmptyPassword(array &$data)
     {
-        if(empty($data["password"])) unset($data["password"]);
+        if (empty($data["password"])) unset($data["password"]);
     }
 
     /**
@@ -108,13 +107,11 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      */
     public function addGroup($user_id, $group_id)
     {
-        try
-        {
+        try {
             $group = Group::findOrFail($group_id);
             $user = User::findOrFail($user_id);
             $user->addGroup($group);
-        } catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             throw new NotFoundException;
         }
     }
@@ -127,13 +124,11 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      */
     public function removeGroup($user_id, $group_id)
     {
-        try
-        {
+        try {
             $group = Group::findOrFail($group_id);
             $user = User::findOrFail($user_id);
             $user->removeGroup($group);
-        } catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             throw new NotFoundException;
         }
     }
@@ -161,11 +156,9 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
      */
     public function findByLogin($login_name)
     {
-        try
-        {
+        try {
             $user = $this->sentry->findUserByLogin($login_name);
-        } catch(UserNotFoundException $e)
-        {
+        } catch (UserNotFoundException $e) {
             throw new NotFoundException;
         }
 
@@ -182,7 +175,7 @@ class SentryUserRepository extends EloquentBaseRepository implements UserReposit
     public function findFromGroupName($group_name)
     {
         $group = $this->sentry->findGroupByName($group_name);
-        if(!$group) throw new UserNotFoundException;
+        if (!$group) throw new UserNotFoundException;
 
         return $group->users;
     }

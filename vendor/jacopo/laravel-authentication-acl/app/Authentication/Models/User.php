@@ -10,7 +10,7 @@ use Cartalyst\Sentry\Users\LoginRequiredException;
 
 class User extends CartaUser
 {
-    protected $fillable = ["email", "password", "permissions", "activated", "activation_code", "activated_at", "last_login", "protected", "banned"];
+    protected $fillable = ["email", "password", "permissions", "activated", "activation_code", "activated_at", "last_login", "protected", "banned", "user_token"];
 
     protected $guarded = ["id"];
 

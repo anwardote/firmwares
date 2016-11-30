@@ -212,6 +212,19 @@ Route::group(['middleware' => ['web']], function ()
                 'uses' => 'LaravelAcl\Authentication\Controllers\PermissionController@deletePermission'
         ]);
     });
+    
+        /*
+      Update Password Prompt
+     */
+    Route::get('/admin/users/password-update', [
+        'as' => 'users.password-update',
+        'uses' => 'LaravelAcl\Authentication\Controllers\UpdatePassword@getPasswordUpdate'
+    ]);
+
+    Route::post('/admin/users/password-update', [
+        'as' => 'users.password-update',
+        'uses' => 'LaravelAcl\Authentication\Controllers\UpdatePassword@postPasswordUpdate'
+    ]);
 });
 //////////////////// Automatic error handling //////////////////////////
 
