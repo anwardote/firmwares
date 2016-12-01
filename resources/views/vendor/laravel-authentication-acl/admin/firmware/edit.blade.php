@@ -48,6 +48,13 @@ Admin area: add snippets
                             {!! Form::select('fcategory_id', $fcategory_output_values, $data->fcategory_id, ["class"=>"form-control"]) !!}
                             <span class="text-danger">{!! $errors->first('fcategory_id') !!}</span>
                         </div>
+
+                        <div class="form-group">
+                            {!! Form::label('view_category_id','Select View Category: *') !!}
+                            {!! Form::select('view_category_id', $view_category, $data->view_category_id, ["class"=>"form-control permission-select chosen-select"]) !!}
+                            <span class="text-danger">{!! $errors->first('view_category_id') !!}</span>
+                        </div>
+
                         <div class="form-group">
                             {!! Form::label('device_id','Select Supported Device: *') !!}
                             {!! Form::select('device_id', $device_output_values, $data->device_id, ["class"=>"form-control permission-select chosen-select"]) !!}

@@ -53,7 +53,10 @@ View::composer([
 View::composer([
     'laravel-authentication-acl::admin.firmware.new',
     'laravel-authentication-acl::admin.firmware.edit',
-    'laravel-authentication-acl::admin.firmware.list'
+    'laravel-authentication-acl::admin.firmware.list',
+    'laravel-authentication-acl::admin.view-category.new',
+    'laravel-authentication-acl::admin.view-category.edit',
+    'laravel-authentication-acl::admin.view-category.list'
         ], function ($view) {
     $fh = new FormHelper();
     $values_fcategory_output = $fh->getSelectfcategoryOutputValues();

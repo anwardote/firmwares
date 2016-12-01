@@ -41,6 +41,13 @@ return [
             "permissions" => ["_tutorial-editor", "_superadmin"]
         ],
         [
+            "name" => "View Category",
+            "route" => "viewcategory.list",
+            "link" => '/admin/category/list',
+            "permissions" => ["_category-editor", "_superadmin"]
+        ],
+
+        [
             "name" => "Setup",
             "route" => "device.list",
             "link" => '/admin/setup/device/list',

@@ -158,6 +158,23 @@ View::composer(['laravel-authentication-acl::admin.tutorial.*'], function ($view
 });
 
 
+/**
+ *  View Category sidebar
+ */
+View::composer(['laravel-authentication-acl::admin.view-category.*'], function ($view) {
+    $view->with('sidebar_items', [
+        " Category list" => [
+            'url' => URL::route('viewcategory.list'),
+            "icon" => '<i class="fa fa-th-list"></i>'
+        ],
+        " Category Add" => [
+            'url' => URL::route('viewcategory.new'),
+            "icon" => '<i class="fa fa-plus-circle"></i>'
+        ]
+    ]);
+});
+
+
 
 /**
  *  Setup sidebar

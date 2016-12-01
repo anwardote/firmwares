@@ -31,17 +31,20 @@ use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Driver;
 use App\Repositories\DriverRepository;
+use App\Repositories\GlobalRepository;
 
 class DriversController extends Controller {
 
     protected $auth;
     protected $logged_user;
     protected $driverRepository;
+    protected $globalrepository;
 
-    public function __construct(AuthenticateInterface $auth, DriverRepository $driverRepo) {
+    public function __construct(AuthenticateInterface $auth, DriverRepository $driverRepo, GlobalRepository $globalRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
         $this->driverRepository = $driverRepo;
+        $this->globalrepository = $globalRepo;
     }
 
     public function getIndex() {
@@ -55,8 +58,8 @@ class DriversController extends Controller {
     }
 
     public function getNew(Request $request) {
-        $info = "welcome to web page";
-        return View::make('laravel-authentication-acl::admin.driver.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
+        $category=$this->globalrepository->findcatForFirmware([3,3]);
+        return View::make('laravel-authentication-acl::admin.driver.new')->with(['user_data' => $this->logged_user, 'view_category' => $category]);
     }
 
     public function postNew(Request $request) {
@@ -65,7 +68,7 @@ class DriversController extends Controller {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'driver_id' => 'required', 'driver_type' => 'required', 'driver_model' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'driver_id' => 'required','view_category_id'=>'required', 'driver_type' => 'required', 'driver_model' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));
@@ -99,14 +102,15 @@ class DriversController extends Controller {
 
     public function getUpdate(Request $request) {
         $result = $this->driverRepository->find($request->id);
-        return View::make('laravel-authentication-acl::admin.driver.edit')->with(['data' => $result]);
+        $category=$this->globalrepository->findcatForFirmware([3,3]);
+        return View::make('laravel-authentication-acl::admin.driver.edit')->with(['data' => $result, 'view_category'=>$category]);
     }
 
     public function postUpdate(Request $request) {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'driver_id' => 'required', 'driver_type' => 'required', 'driver_model' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'driver_id' => 'required', 'view_category_id'=>'required','driver_type' => 'required', 'driver_model' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));

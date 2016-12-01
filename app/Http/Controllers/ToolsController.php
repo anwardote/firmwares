@@ -31,17 +31,20 @@ use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Tool;
 use App\Repositories\ToolRepository;
+use App\Repositories\GlobalRepository;
 
 class ToolsController extends Controller {
 
     protected $auth;
     protected $logged_user;
     protected $toolRepository;
+    protected $globalrepository;
 
-    public function __construct(AuthenticateInterface $auth, ToolRepository $toolRepo) {
+    public function __construct(AuthenticateInterface $auth, ToolRepository $toolRepo, GlobalRepository $globalRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
         $this->toolRepository = $toolRepo;
+        $this->globalrepository = $globalRepo;
     }
 
     public function getIndex() {
@@ -55,8 +58,8 @@ class ToolsController extends Controller {
     }
 
     public function getNew(Request $request) {
-        $info = "welcome to web page";
-        return View::make('laravel-authentication-acl::admin.tool.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
+        $category=$this->globalrepository->findcatForFirmware([4,4]);
+        return View::make('laravel-authentication-acl::admin.tool.new')->with(['user_data' => $this->logged_user, 'view_category'=>$category]);
     }
 
     public function postNew(Request $request) {
@@ -65,7 +68,7 @@ class ToolsController extends Controller {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'title' => 'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'title' => 'required', 'view_category_id'=>'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));
@@ -89,15 +92,16 @@ class ToolsController extends Controller {
     }
 
     public function getUpdate(Request $request) {
+        $category=$this->globalrepository->findcatForFirmware([4,4]);
         $result = $this->toolRepository->find($request->id);
-        return View::make('laravel-authentication-acl::admin.tool.edit')->with(['data' => $result]);
+        return View::make('laravel-authentication-acl::admin.tool.edit')->with(['data' => $result, 'view_category'=>$category]);
     }
 
     public function postUpdate(Request $request) {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'title' => 'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'title' => 'required', 'view_category_id'=>'required','instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));

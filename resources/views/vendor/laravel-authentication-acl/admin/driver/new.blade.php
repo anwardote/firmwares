@@ -53,6 +53,12 @@ Admin area: add snippets
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('view_category_id','Select View Category: *') !!}
+                            {!! Form::select('view_category_id', $view_category, '', ["class"=>"form-control permission-select chosen-select"]) !!}
+                            <span class="text-danger">{!! $errors->first('view_category_id') !!}</span>
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('driver_type','Select Driver Type: *') !!}
                             {!! Form::select('driver_type[]', $driver_type_values, '', ["class"=>"form-control permission-select chosen-select", 'multiple'=>'multiple']) !!}
                             <span class="text-danger">{!! $errors->first('driver_type') !!}</span>

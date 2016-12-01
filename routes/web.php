@@ -172,6 +172,37 @@ Route::group(['prefix' => 'admin'], function () {
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
         'as' => 'tutorial.delete',
         'uses' => 'TutorialsController@delete']);
+
+    /* View Category */
+    Route::get('/category/list', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_category-editor'),
+        'as' => 'viewcategory.list',
+        'uses' => 'ViewCategoryController@getAdminList']);
+
+    Route::get('/category/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_category-editor'),
+        'as' => 'viewcategory.new',
+        'uses' => 'ViewCategoryController@getNew']);
+
+    Route::post('/category/new', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_category-editor'),
+        'as' => 'viewcategory.new',
+        'uses' => 'ViewCategoryController@postNew']);
+
+    Route::get('/category/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_category-editor'),
+        'as' => 'viewcategory.edit',
+        'uses' => 'ViewCategoryController@getUpdate']);
+
+    Route::post('/category/edit', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_category-editor'),
+        'as' => 'viewcategory.edit',
+        'uses' => 'ViewCategoryController@postUpdate']);
+
+    Route::get('/category/delete', [
+        'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
+        'as' => 'viewcategory.delete',
+        'uses' => 'ViewCategoryController@delete']);
 });
 
 

@@ -70,7 +70,14 @@ return [
                 "tutorial_new_success"                  => "New Tutorial added with success.",
                 "tutorial_edit_success"                 => "Tutorial edited with success.",
                 "tutorial_delete_success"               => "Tutorial deleted with success.",
-               // device
+
+                // viewcategory
+                "viewcategory_new_success"                  => "New View Category added with success.",
+                "viewcategory_edit_success"                 => "View Category edited with success.",
+                "viewcategory_delete_success"               => "View Category deleted with success.",
+
+
+                // device
                 "device_new_success"                    => "New device added with success.",
                 "device_edit_success"                   => "Device edited with success.",
                 "device_delete_success"                 => "Device deleted with success.",

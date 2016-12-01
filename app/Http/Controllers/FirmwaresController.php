@@ -31,17 +31,20 @@ use LaravelAcl\Authentication\Validators\UserProfileValidator;
 use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Firmware;
 use App\Repositories\FirmwareRepository;
+use App\Repositories\GlobalRepository;
 
 class FirmwaresController extends Controller {
 
     protected $auth;
     protected $logged_user;
     protected $firmwareRepository;
+    protected $globalrepository;
 
-    public function __construct(AuthenticateInterface $auth, FirmwareRepository $firmwareRepo) {
+    public function __construct(AuthenticateInterface $auth, FirmwareRepository $firmwareRepo, GlobalRepository $globalRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
         $this->firmwareRepository = $firmwareRepo;
+        $this->globalrepository = $globalRepo;
     }
 
     public function getIndex() {
@@ -55,8 +58,8 @@ class FirmwaresController extends Controller {
     }
 
     public function getNew(Request $request) {
-        $info = "welcome to web page";
-        return View::make('laravel-authentication-acl::admin.firmware.new')->with(['user_data' => $this->logged_user, 'info' => $info]);
+        $category=$this->globalrepository->findcatForFirmware([1,2]);
+        return View::make('laravel-authentication-acl::admin.firmware.new')->with(['user_data' => $this->logged_user, 'view_category' => $category]);
     }
 
     public function postNew(Request $request) {
@@ -65,7 +68,7 @@ class FirmwaresController extends Controller {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, ['fcategory_id' => 'required', 'device_id' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, ['fcategory_id' => 'required', 'view_category_id'=>'required', 'device_id' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
 
         /* START custom value set */
@@ -99,15 +102,16 @@ class FirmwaresController extends Controller {
     }
 
     public function getUpdate(Request $request) {
+        $category=$this->globalrepository->findcatForFirmware([1,2]);
         $result = $this->firmwareRepository->find($request->id);
-        return View::make('laravel-authentication-acl::admin.firmware.edit')->with(['data' => $result]);
+        return View::make('laravel-authentication-acl::admin.firmware.edit')->with(['data' => $result, 'view_category'=>$category]);
     }
 
     public function postUpdate(Request $request) {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, ['fcategory_id' => 'required', 'device_id' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, ['fcategory_id' => 'required', 'view_category_id'=>'required', 'device_id' => 'required', 'device_model' => 'required', 'device_version' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
 
         /* START custom value set */
