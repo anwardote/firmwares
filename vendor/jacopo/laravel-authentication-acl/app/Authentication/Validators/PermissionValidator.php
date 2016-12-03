@@ -14,7 +14,12 @@ class PermissionValidator extends AbstractValidator
     {
         Event::listen('validating', function($input)
         {
-            static::$rules["permission"][] = "unique:permission,permission,{$input['id']}";
+            if(isset($input['id']) && !empty($input['id'])){
+                static::$rules["permission"][] = "unique:permission,permission,{$input['id']}";
+            } else {
+                static::$rules["permission"][] = "unique:permission,permission";
+            }
+
         });
     }
 } 

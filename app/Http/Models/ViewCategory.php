@@ -9,7 +9,7 @@ use App\Http\Models\Fcategory;
 class ViewCategory extends Model
 {
 
-    protected $fillable = ['title', 'description', 'fcategory_id'];
+    protected $fillable = ['title', 'description', 'fcategory_id', 'search_engine'];
 
     public function fcategory()
     {

@@ -58,7 +58,7 @@ Admin area: add Tutorial
 
                         <div class="form-group">
                             {!! Form::label('noted','Noted (if any):') !!}
-                            {!! Form::text('noted', null, [ 'class' => 'form-control', 'placeholder' => 'Firmware Note here.']) !!}
+                            {!! Form::text('noted', null, [ 'class' => 'form-control', 'placeholder' => 'Tutorial Note here.']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('noted') !!}</span>
                         {!! Form::hidden('id') !!}

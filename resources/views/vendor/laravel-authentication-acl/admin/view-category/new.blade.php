@@ -55,6 +55,12 @@ Admin area: add Tutorial
                             <span class="text-danger">{!! $errors->first('description') !!}</span>
                         </div>
 
+                        <div class="form-group">
+                            {!! Form::label('search_engine','Google Search Keywords:') !!}
+                            {!! Form::textarea('search_engine', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Google Search Keywords here.']) !!}
+                            <span class="text-danger">{!! $errors->first('search_engine') !!}</span>
+                        </div>
+
                         {{--<div class="form-group">--}}
                             {{--<div class="form-group">--}}
                                 {{--{!! Form::label('image','Device Thumbnail: ') !!}                                --}}

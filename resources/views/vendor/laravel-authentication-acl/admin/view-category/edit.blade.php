@@ -33,7 +33,6 @@ Admin area: add Tutorial
 
                         {!! Form::model($data, [ 'url' => [URL::route('viewcategory.edit'), $data->id], 'method' => 'post', 'files' => true] ) !!}
 
-
                         <div class="form-group">
                             {!! Form::label('fcategory_id','Select Category: *') !!}
                             {!! Form::select('fcategory_id', $fcategory_output_values, $data->fcategory_id, ["class"=>"form-control"]) !!}
@@ -50,6 +49,12 @@ Admin area: add Tutorial
                             {!! Form::label('description','Description:') !!}
                             {!! Form::textarea('description', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Description here.']) !!}
                             <span class="text-danger">{!! $errors->first('description') !!}</span>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('search_engine','Google Search Keywords:') !!}
+                            {!! Form::textarea('search_engine', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Google Search Keywords here.']) !!}
+                            <span class="text-danger">{!! $errors->first('search_engine') !!}</span>
                         </div>
                         
                         {{--<div class="form-group">--}}

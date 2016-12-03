@@ -45,14 +45,17 @@
                             'route' => 'firmware.new',
                             'class' => '',
                             'files' => true)) !!}
-
+                            <?php
+                            unset($fcategory_output_values[3]);
+                            unset($fcategory_output_values[4]);
+                            ?>
                             <div class="form-group">
                                 {!! Form::label('fcategory_id','Select Firmware Category: *') !!}
                                 {!! Form::select('fcategory_id', $fcategory_output_values, '', ["class"=>"form-control"]) !!}
                                 <span class="text-danger">{!! $errors->first('fcategory_id') !!}</span>
                             </div>
 
-                              <div class="form-group">
+                            <div class="form-group">
                                 {!! Form::label('view_category_id','Select View Category: *') !!}
                                 {!! Form::select('view_category_id', $view_category, '', ["class"=>"form-control permission-select chosen-select"]) !!}
                                 <span class="text-danger">{!! $errors->first('view_category_id') !!}</span>
@@ -123,11 +126,11 @@
                                 <span class="text-danger">{!! $errors->first('tutorial_id') !!}</span>
                             </div>
 
-                            <div class="form-group">
-                                {!! Form::label('st_instruct','Starting Instruction(if any):') !!}
-                                {!! Form::textarea('st_instruct', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}
-                                <span class="text-danger">{!! $errors->first('st_instruct') !!}</span>
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--{!! Form::label('st_instruct','Starting Instruction(if any):') !!}--}}
+                                {{--{!! Form::textarea('st_instruct', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}--}}
+                                {{--<span class="text-danger">{!! $errors->first('st_instruct') !!}</span>--}}
+                            {{--</div>--}}
 
                             <div class="form-group">
                                 {!! Form::label('status','Select status: *') !!}

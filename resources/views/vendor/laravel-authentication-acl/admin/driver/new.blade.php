@@ -114,11 +114,11 @@ Admin area: add snippets
                             <span class="text-danger">{!! $errors->first('tutorial_id') !!}</span>
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('st_instruct','Starting Instruction(if any):') !!}
-                            {!! Form::textarea('st_instruct', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}
-                            <span class="text-danger">{!! $errors->first('st_instruct') !!}</span>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label('st_instruct','Starting Instruction(if any):') !!}--}}
+                            {{--{!! Form::textarea('st_instruct', null, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}--}}
+                            {{--<span class="text-danger">{!! $errors->first('st_instruct') !!}</span>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             {!! Form::label('status','Select status: *') !!}
@@ -145,7 +145,7 @@ Admin area: add snippets
                                                 </div>-->
                         <div class="form-group">
                             {!! Form::label('noted','Noted (if any):') !!}
-                            {!! Form::text('noted', null, [ 'class' => 'form-control', 'placeholder' => 'Firmware Note here.']) !!}
+                            {!! Form::text('noted', null, [ 'class' => 'form-control', 'placeholder' => 'Driver Note here.']) !!}
                         </div>
                         <span class="text-danger">{!! $errors->first('noted') !!}</span>
                         {!! Form::hidden('id') !!}

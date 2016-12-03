@@ -17,15 +17,18 @@ Route::group(['prefix' => ''], function () {
         'as' => 'home',
         'uses' => 'CMSViewController@getHomePage']);
 
+    Route::get('/firmware', [
+        'middleware' => array('can_see'),
+        'as' => 'firmware',
+        'uses' => 'CMSViewController@getFirmwarePage']);
+
+
+
     Route::get('/tutorials', [
         'middleware' => array('can_see'),
         'as' => 'tutorials',
         'uses' => 'TutorialsController@getIndex']);
 
-    Route::get('/firmwares', [
-        'middleware' => array('can_see'),
-        'as' => 'firmwares',
-        'uses' => 'FirmwaresController@getIndex']);
 
     Route::get('/drivers', [
         'middleware' => array('can_see'),

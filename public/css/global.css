@@ -66,7 +66,7 @@ img.fullwidth{width:100%; height:auto;}
     float:left;
 }
 #header #logo img {
-    height:75px;
+    height:55px;
 }
 #header #hdrRight {
     padding-top:24px;
@@ -632,3 +632,4 @@ body.page-id-111 {
         display: none;
     }
 }
+

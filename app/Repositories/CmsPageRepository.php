@@ -116,7 +116,7 @@ class CmsPageRepository
 
     public function findBySlugOrId($page)
     {
-        $pageInstance = CmsPage::where('template', 'home')->first()->get();
+        $pageInstance = CmsPage::where('template', '=', $page)->get();
         $pageArr = $pageInstance[0]['attributes'];
         $ExtrasArray = json_decode($pageArr['extras'], true);
         unset($pageArr['extras']);

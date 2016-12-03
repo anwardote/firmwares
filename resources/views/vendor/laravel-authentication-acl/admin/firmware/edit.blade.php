@@ -39,9 +39,10 @@ Admin area: add snippets
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         {{-- group base form --}}
-<?php 
-//dd($data);
-?>
+                        <?php
+                        unset($fcategory_output_values[3]);
+                        unset($fcategory_output_values[4]);
+                        ?>
                         {!! Form::model($data, [ 'url' => [URL::route('firmware.edit'), $data->id], 'method' => 'post', 'files' => true] ) !!}
                         <div class="form-group">
                             {!! Form::label('fcategory_id','Select Firmware Category: *') !!}
@@ -116,11 +117,11 @@ Admin area: add snippets
                             <span class="text-danger">{!! $errors->first('tutorial_id') !!}</span>
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('st_instruct','Starting Instruction(if any):') !!}
-                            {!! Form::textarea('st_instruct', $data->st_instruct, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}
-                            <span class="text-danger">{!! $errors->first('st_instruct') !!}</span>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label('st_instruct','Starting Instruction(if any):') !!}--}}
+                            {{--{!! Form::textarea('st_instruct', $data->st_instruct, [ 'class' => 'form-control tinymce', 'placeholder' => 'Starting Instruction here.']) !!}--}}
+                            {{--<span class="text-danger">{!! $errors->first('st_instruct') !!}</span>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             {!! Form::label('status','Select status: *') !!}

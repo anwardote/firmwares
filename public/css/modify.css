@@ -424,6 +424,54 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
     height: auto;
 }
 .admin-area.build{padding: 10px 0;}
+
+
+
+
+/* @group Blink */
+.blink {
+    -webkit-animation: blink .75s linear infinite;
+    -moz-animation: blink .75s linear infinite;
+    -ms-animation: blink .75s linear infinite;
+    -o-animation: blink .75s linear infinite;
+    animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+/* @end */
+-->
+
+
+
+
 @media only screen and (min-width: 992px) {
     .masthead {
         background-image: url('../images/assets2.jpg');
@@ -481,7 +529,9 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 @media only screen and (max-width : 850px) {
 
-
+    #header #logo img {
+        height:46px;
+    }
 
     #header #navWrap #mobileMenuBtn {
         display:block;
@@ -538,7 +588,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 @media only screen and (max-width : 660px) {
     #header #logo img {
-        height:60px;
+        height:35px;
     }
 
     #header {
@@ -570,7 +620,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
     }
     #header #mobileMenuBtn {
         color:#333333;
-        top:-58px;
+        top:-48px;
     }
     #navWrap #navigation-container {
         top:5px;
@@ -585,13 +635,13 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 @media only screen and (max-width : 600px) {
 
     #header #logo img {
-        height:50px;
+        height:30px;
     }
     #header #hdrRight {
         padding-top:7px;
     }
     #header #mobileMenuBtn {
-        top:-48px;
+        top:-40px;
     }
     #header {
         height:101px;
@@ -604,7 +654,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 @media only screen and (max-width : 560px) {
 
     #header #logo img {
-        height:40px;
+        height:28px;
     }
 
     #header #navMiniMobile {
@@ -626,12 +676,12 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 }
 @media only screen and (max-width : 545px) {
     #header #logo img {
-        height:35px;
+        height:26px;
     }
 
     h2 {
         line-height:normal;
-        padding-top:20px;
+        padding-top:25px;
     }
 
     h1#pageTitle {
@@ -651,7 +701,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 @media only screen and (max-width : 475px) {
 
     #header #logo img {
-        height:30px;
+        height:20px;
     }
 
     h1#pageTitle {
@@ -665,13 +715,13 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
 
 }
 @media only screen and (max-width : 460px) {
-    h2 {font-size:30px;}
+    h2 {font-size:27px;}
 
 }
 
 @media only screen and (max-width : 360px) {
     #header #logo img {
-        height:25px;
+        height:15px;
     }
     #header #addtlLinks {
         display: block;
@@ -693,7 +743,7 @@ background: gray;
 @media only screen and (max-width : 260px) {
 
     #header #logo img {
-        height:20px;
+        height:12px;
     }
 }
 
