@@ -259,12 +259,12 @@
                             ?>
                             <div class="col-sm-6">
                                 <div class="sheets-inner">
-                                    <a target="_blank" href=""><img style="max-width: 180px"
+                                    <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}"><img style="max-width: 180px"
                                                                     src="/assets/icons/android-category-icon.png"/></a>
                                     <div class="right-s-in">
-                                        <h3>{!! $title !!}</h3>
+                                        <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}}</a></h3>
                                         <p>{!! $content !!}</p>
-                                        <a target="_blank" href="">Learn more</a>
+                                        <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a>
 
                                     </div>
                                 </div>
@@ -279,7 +279,10 @@
                         @endforeach
                         @if($androidShowAll==true)
                             <div class="pull-right">
-                                <img class="blink" src="/images/hand-indicator.png"> &nbsp;{{ HTML::link('/view-category/android', 'Show All Android Firmwares', array('class' => 'btn btn-danger') )}}
+                                <img class="blink" src="/images/hand-indicator.png">
+                                &nbsp;
+                                <a href="{{ route('firmware.category') }}/android" class="btn btn-danger">Show All Android Firmwares</a>
+                                {{--{{ HTML::link('/view-category/android', 'Show All Android Firmwares', array('class' => 'btn btn-danger') )}}--}}
 
                             </div>
                         @endif
@@ -301,12 +304,12 @@
                             ?>
                             <div class="col-sm-6">
                                 <div class="sheets-inner">
-                                    <a target="_blank" href=""><img style="max-width: 180px"
+                                    <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}"><img style="max-width: 180px"
                                                                     src="/assets/icons/normal-category-icon.png"/></a>
                                     <div class="right-s-in">
-                                        <h3>{!! $title !!}</h3>
+                                        <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}</a></h3>
                                         <p>{!! $content !!}</p>
-                                        <a target="_blank" href="">Learn more</a>
+                                        <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a>
 
                                     </div>
                                 </div>
@@ -324,12 +327,15 @@
                 </div>
             @endif
 
-                @if($normalShowAll==true)
-                    <div class="pull-right">
-                        <img class="blink" src="/images/hand-indicator.png"> &nbsp;{{ HTML::link('/view-category/normal', 'Show All Normal/Smartphone Firmwares', array('class' => 'btn btn-danger'))}}
+            @if($normalShowAll==true)
+                <div class="pull-right">
+                    <img class="blink" src="/images/hand-indicator.png">
+                    &nbsp;
+                    <a href="{{ route('firmware.category') }}/normal" class="btn btn-danger">Show All Normal/Smartphone Firmwares</a>
+                    {{--{{ HTML::link('firmware/category', 'Show All Normal/Smartphone Firmwares', array('class' => 'btn btn-danger'))}}--}}
 
-                    </div>
-                @endif
+                </div>
+            @endif
         </div>
     </div>
 

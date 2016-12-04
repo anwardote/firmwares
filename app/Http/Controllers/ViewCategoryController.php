@@ -90,4 +90,16 @@ class ViewCategoryController extends Controller {
         return Redirect::route('viewcategory.list')->withMessage(Config::get('acl_messages.flash.success.viewcategory_delete_success'));
     }
 
+
+
+    /* For CMS Page*/
+
+    public function getFirmwareCategoryView(Request $request){
+        $results = $this->viewCategoryRepository->allWhere($request->except(['page']), $request);
+        return View::make('admin.pages.firmware-categoryview')->with(['results'=>$results, 'request'=>$request]);
+
+        // return View::make('laravel-authentication-acl::admin.view-category.list')->with(['user_data' => $this->logged_user, 'results' => $results, 'request' => $request]);
+
+}
+
 }

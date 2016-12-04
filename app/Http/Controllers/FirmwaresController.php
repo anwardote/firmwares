@@ -32,6 +32,7 @@ use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Firmware;
 use App\Repositories\FirmwareRepository;
 use App\Repositories\GlobalRepository;
+use App\Repositories\ViewCategoryRepository;
 
 class FirmwaresController extends Controller {
 
@@ -39,12 +40,14 @@ class FirmwaresController extends Controller {
     protected $logged_user;
     protected $firmwareRepository;
     protected $globalrepository;
+    protected $viewCategoryRepository;
 
-    public function __construct(AuthenticateInterface $auth, FirmwareRepository $firmwareRepo, GlobalRepository $globalRepo) {
+    public function __construct(AuthenticateInterface $auth, FirmwareRepository $firmwareRepo, GlobalRepository $globalRepo, ViewCategoryRepository $viewCategoryRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
         $this->firmwareRepository = $firmwareRepo;
         $this->globalrepository = $globalRepo;
+        $this->viewCategoryRepository = $viewCategoryRepo;
     }
 
     public function getIndex() {
@@ -146,6 +149,14 @@ class FirmwaresController extends Controller {
     public function delete(Request $request) {
         $this->firmwareRepository->delete($request->id);
         return Redirect::route('firmware.list')->withMessage(Config::get('acl_messages.flash.success.firmware_delete_success'));
+    }
+
+    /*CMS Page View*/
+
+    public function getFirmware(Request $request){
+        $results = $this->firmwareRepository->allWhere($request->except(['page']), $request);
+        $category = $this->viewCategoryRepository->find($request->view_category_id);
+        return View::make('admin.pages.firmwareCategoryFirmwarDevice')->with(['results'=>$results, 'request'=>$request, 'category'=>$category]);
     }
 
 }

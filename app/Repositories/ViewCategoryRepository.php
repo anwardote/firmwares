@@ -21,12 +21,6 @@ class ViewCategoryRepository {
         
     }
 
-    /**
-     * Create a new object
-     *
-     * @return mixed
-     * @override
-     */
     public function create(array $input) {
 
         try {
@@ -38,13 +32,7 @@ class ViewCategoryRepository {
         return $d;
     }
 
-    /**
-     * Update a new object
-     *
-     * @param       id
-     * @param array $data
-     * @return mixed
-     */
+
     public function update($id, array $data) {
         $obj = $this->find($id);
         //  Event::fire('repository.updating', [$obj]);
@@ -52,13 +40,6 @@ class ViewCategoryRepository {
         return $obj;
     }
 
-    /**
-     * Obtains all models
-     *
-     * @override
-     * @param array $search_filters
-     * @return mixed
-     */
     public function all(array $search_filters = []) {
 
         $q = new ViewCategory();
@@ -67,37 +48,20 @@ class ViewCategoryRepository {
         return $q->paginate($per_page);
     }
 
-    /**
-     * @param array $search_filters
-     * @param       $q
-     * @return mixed
-     */
     protected function applySearchFilters(array $search_filters, $q) {
         if (isset($search_filters['name']) && $search_filters['name'] !== '')
             $q = $q->where('name', 'LIKE', "%{$search_filters['name']}%");
         return $q;
     }
 
-    /**
-     * Deletes a new object
-     *
-     * @param $id
-     * @return mixed
-     */
+
     public function delete($id) {
         $obj = $this->find($id);
         //   Event::fire('repository.deleting', [$obj]);
         return $obj->delete();
     }
 
-    /**
-     * Find a model by his id
-     *
-     * @param $id
-     * @return mixed
-     * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
-     */
-    public function find($id) {
+     public function find($id) {
         try {
            $d = ViewCategory::find($id);
         } catch (GroupNotFoundException $e) {
@@ -106,7 +70,23 @@ class ViewCategoryRepository {
 
         return $d;
     }
-    
-    
+
+
+    public function allWhere(array $search_filters = [], $request) {
+
+        $q = new ViewCategory();
+        $per_page = Config::get('acl_base.list_per_page');
+     //   $q = $this->applySearchFilters($search_filters, $q);
+        $fcategory_id='';
+        if($request->deviceType=='android'){
+            $fcategory_id=1;
+        } elseif($request->deviceType=='normal'){
+            $fcategory_id=2;
+        }
+        return $q->where('fcategory_id', $fcategory_id)
+            ->orderBy('created_at', 'desc')
+            ->paginate($per_page);
+    }
+
 
 }

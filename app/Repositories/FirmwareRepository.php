@@ -11,14 +11,16 @@ use App\Http\Models\Firmware;
 use Config,
     Event;
 
-class FirmwareRepository {
+class FirmwareRepository
+{
 
     /**
      * Sentry instance
      * @var
      */
-    public function __construct() {
-        
+    public function __construct()
+    {
+
     }
 
     /**
@@ -27,7 +29,8 @@ class FirmwareRepository {
      * @return mixed
      * @override
      */
-    public function create(array $input) {
+    public function create(array $input)
+    {
 
         try {
             $firmware = new Firmware();
@@ -45,7 +48,8 @@ class FirmwareRepository {
      * @param array $data
      * @return mixed
      */
-    public function update($id, array $data) {
+    public function update($id, array $data)
+    {
         $obj = $this->find($id);
         //  Event::fire('repository.updating', [$obj]);
         $obj->update($data);
@@ -59,11 +63,12 @@ class FirmwareRepository {
      * @param array $search_filters
      * @return mixed
      */
-    public function all(array $search_filters = []) {
+    public function all(array $search_filters = [])
+    {
 
         $q = new Firmware();
         $per_page = Config::get('acl_base.list_per_page');
-       // $q = $this->applySearchFilters($search_filters, $q);
+        // $q = $this->applySearchFilters($search_filters, $q);
         return $q->paginate($per_page);
     }
 
@@ -72,7 +77,8 @@ class FirmwareRepository {
      * @param       $q
      * @return mixed
      */
-    protected function applySearchFilters(array $search_filters, $q) {
+    protected function applySearchFilters(array $search_filters, $q)
+    {
         if (isset($search_filters['name']) && $search_filters['name'] !== '')
             $q = $q->where('name', 'LIKE', "%{$search_filters['name']}%");
         return $q;
@@ -84,7 +90,8 @@ class FirmwareRepository {
      * @param $id
      * @return mixed
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $obj = $this->find($id);
         //   Event::fire('repository.deleting', [$obj]);
         return $obj->delete();
@@ -97,7 +104,8 @@ class FirmwareRepository {
      * @return mixed
      * @throws \LaravelAcl\Authentication\Exceptions\UserNotFoundException
      */
-    public function find($id) {
+    public function find($id)
+    {
         try {
             $Firmware = Firmware::find($id);
         } catch (GroupNotFoundException $e) {
@@ -106,7 +114,20 @@ class FirmwareRepository {
 
         return $Firmware;
     }
-    
-    
+
+    /*CMS View*/
+
+    public function allWhere(array $search_filters = [], $request)
+    {
+
+        $q = new Firmware();
+        $per_page = Config::get('acl_base.list_per_page');
+        // $q = $this->applySearchFilters($search_filters, $q);
+        return $q->where([['view_category_id', $request->view_category_id], ['status', 'PUBLISHED']])
+            ->orderBy('created_at', 'desc')
+            ->paginate($per_page);
+
+    }
+
 
 }

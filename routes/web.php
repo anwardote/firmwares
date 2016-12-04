@@ -23,7 +23,6 @@ Route::group(['prefix' => ''], function () {
         'uses' => 'CMSViewController@getFirmwarePage']);
 
 
-
     Route::get('/tutorials', [
         'middleware' => array('can_see'),
         'as' => 'tutorials',
@@ -304,7 +303,6 @@ Route::group(['prefix' => 'admin/setup'], function () {
 });
 
 
-
 Route::group(['prefix' => 'admin/cms'], function () {
 
     /*Post CMS */
@@ -337,11 +335,9 @@ Route::group(['prefix' => 'admin/cms'], function () {
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
         'as' => 'post.delete',
         'uses' => 'PostsController@delete']);
-    
-    
-    
-    
-     /*Page CMS */
+
+
+    /*Page CMS */
     Route::get('/page/list', [
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
         'as' => 'page.list',
@@ -371,9 +367,9 @@ Route::group(['prefix' => 'admin/cms'], function () {
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
         'as' => 'page.delete',
         'uses' => 'PagesController@delete']);
-    
-    
-     /*Category CMS */
+
+
+    /*Category CMS */
     Route::get('/category/list', [
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_cms'),
         'as' => 'category.list',
@@ -403,6 +399,20 @@ Route::group(['prefix' => 'admin/cms'], function () {
         'middleware' => array('can_see', 'admin_logged', 'has_perm:_delete'),
         'as' => 'category.delete',
         'uses' => 'CategoriesController@delete']);
-    
-    
+
+
+});
+
+Route::group(['prefix' => 'firmware'], function () {
+    /* START Formware */
+    Route::get('view-category/{deviceType?}', [
+        'middleware' => array('can_see'),
+        'as' => 'firmware.category',
+        'uses' => 'ViewCategoryController@getFirmwareCategoryView']);
+
+    Route::get('category/{view_category_id?}', [
+        'middleware' => array('can_see'),
+        'as' => 'firmware.category.firmware',
+        'uses' => 'FirmwaresController@getFirmware']);
+
 });
