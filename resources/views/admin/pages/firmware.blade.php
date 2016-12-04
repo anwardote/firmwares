@@ -262,7 +262,7 @@
                                     <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}"><img style="max-width: 180px"
                                                                     src="/assets/icons/android-category-icon.png"/></a>
                                     <div class="right-s-in">
-                                        <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}}</a></h3>
+                                        <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}</a></h3>
                                         <p>{!! $content !!}</p>
                                         <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a>
 
@@ -277,7 +277,7 @@
                             $i++;
                             ?>
                         @endforeach
-                        @if($androidShowAll==true)
+                        @if(isset($androidShowAll) && $androidShowAll==true)
                             <div class="pull-right">
                                 <img class="blink" src="/images/hand-indicator.png">
                                 &nbsp;
@@ -327,7 +327,7 @@
                 </div>
             @endif
 
-            @if($normalShowAll==true)
+            @if(isset($normalShowAll) && $normalShowAll==true)
                 <div class="pull-right">
                     <img class="blink" src="/images/hand-indicator.png">
                     &nbsp;
@@ -342,21 +342,3 @@
 
     <div style="height:60px;"></div>
 @stop
-
-
-@if( count($user_data->user_profile()->first()) > 0 && (strtolower($user_data->groups()->first()->name)=="health system" || strtolower($user_data->groups()->first()->name)=="health plan" || strtolower($user_data->groups()->first()->name)=="employer"))
-@section('footer_scripts')
-    <script>
-        $(document).ready(function () {
-            var ajpath = window.location.href;
-            $.ajax({
-                dataType: "json",
-                url: '/admin/pagelog/',
-                data: {log_name: 'resources-page', title: 'Resources page', path: ajpath},
-                success: function (result) {
-                },
-            });
-        });
-    </script>
-@stop
-@endif
