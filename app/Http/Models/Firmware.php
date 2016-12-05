@@ -10,34 +10,65 @@ use App\Http\Models\Tutorial;
 use App\Http\Models\Country;
 use App\Http\Models\ViewCategory;
 use App\User;
+use LaravelAcl\Authentication\Models\UserProfile;
+use LaravelAcl\Authentication\Presenters\UserProfilePresenter;
 
-class Firmware extends Model {
+class Firmware extends Model
+{
 
     //protected $fillable = ['fcategory_id', 'st_instruct', 'device_id', 'device_model', 'device_version', 'tutorial_id', 'country_id', 'd_links', 'd_sizes', 'noted', 'status', 'featured', 'user_id'];
-    protected $fillable = ['fcategory_id', 'device_id', 'tutorial_id', 'country_id', 'user_id', 'view_category_id','st_instruct', 'device_model', 'device_version', 'd_links', 'd_sizes', 'noted', 'status', 'featured'];
+    protected $fillable = ['fcategory_id', 'device_id', 'tutorial_id', 'country_id', 'user_id', 'view_category_id', 'st_instruct', 'device_model', 'device_version', 'd_links', 'd_sizes', 'noted', 'status', 'featured'];
 
-    public function fcategory() {
+    public function fcategory()
+    {
         return $this->belongsTo(Fcategory::class);
     }
 
-    public function device() {
+    public function device()
+    {
         return $this->belongsTo(Device::class);
     }
 
-    public function tutorial() {
+    public function tutorial()
+    {
         return $this->belongsTo(Tutorial::class);
     }
 
-    public function country() {
+    public function country()
+    {
         return $this->belongsTo(Country::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function viewcatgory() {
+    public function user_profile()
+    {
+        return new UserProfile();
+    }
+
+    public function presenter()
+    {
+        return new UserProfilePresenter($this);
+    }
+
+    public function viewcatgory()
+    {
         return $this->belongsTo(ViewCategory::class);
+    }
+
+    public function getcountryName($countryArr)
+    {
+        $countryArr = explode(',', $countryArr);
+        $model = new Country();
+        $countryName = $model->select('country_name')
+            ->whereIn('id', $countryArr)// pass an array
+            ->orderBy('id', 'ASC')
+            ->get();
+
+        return $countryName->toArray();
     }
 
 }

@@ -62,7 +62,7 @@ if ($user) {
                     <div id="navMiniMobile"> <a href="{!! URL::route('users.selfprofile.edit') !!}">My Account</a><span> | </span><a href="{!! URL::route('user.logout') !!}">Sign Out</a></div>
                     <ul class="menu">
                         <li <?php if (isset($current_route) && $current_route == "home"): ?>class="active"<?php endif; ?>><a href="/">Home</a><li>       
-                        <li <?php if (isset($current_route) && $current_route == "tutorial"): ?>class="active" <?php endif; ?>><a href="#">Tutorials</a><li>
+                        <li <?php if (isset($current_route) && $current_route == "tutorial"): ?>class="active" <?php endif; ?>><a href="{{ route('tutorial') }}">Tutorials</a><li>
                         <li <?php if (isset($current_route) && $current_route == "firmware"): ?>class="active" <?php endif; ?>><a href="{{ route('firmware') }}">Firmware</a><li>
                         <li <?php if (isset($current_route) && $current_route == "driver"): ?>class="active" <?php endif; ?>><a href="#">Driver</a><li>
                         <li <?php if (isset($current_route) && $current_route == "tool"): ?>class="active" <?php endif; ?>><a href="#">Tools</a><li>

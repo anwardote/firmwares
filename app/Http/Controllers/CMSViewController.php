@@ -43,26 +43,21 @@ class CMSViewController extends Controller {
     protected $auth;
     protected $cmsPageRepository;
 
-    public function __construct(AuthenticateInterface $auth, CmsPageRepository $CmsPageRepo) {
-
-        $this->auth = $auth;
+    public function __construct(CmsPageRepository $CmsPageRepo) {
         $this->cmsPageRepository=$CmsPageRepo;
     }
 
     public function getHomePage() {
-        $logged_user = $this->auth->getLoggedUser();
-
         $page=$this->cmsPageRepository->findBySlugOrId('home');
         $sliders='';
         if($page->banner_type=='slider'){
             $sliders = CmsPost::where([['cms_category_id', 6], ['status', 'PUBLISHED']])->get();
         }
         $home = CmsPost::where([['cms_category_id', 1], ['status', 'PUBLISHED']])->get();
-        return View::make('admin.pages.page')->with(['user_data' => $logged_user, 'sliders' => $sliders, 'page' => $page, 'home_rows' => $home]);
+        return View::make('admin.pages.page')->with([ 'sliders' => $sliders, 'page' => $page, 'home_rows' => $home]);
     }
 
     public function getFirmwarePage() {
-        $logged_user = $this->auth->getLoggedUser();
 
         $page=$this->cmsPageRepository->findBySlugOrId('firmware');
         $sliders='';
@@ -85,8 +80,21 @@ class CMSViewController extends Controller {
             $normalShowAll=true;
             unset($normal[6]);
         }
-        return View::make('admin.pages.firmware')->with(['user_data' => $logged_user, 'sliders' => $sliders, 'page' => $page, 'cms_post' => $cms_Post, 'android'=>$android, 'normal'=>$normal, 'androidShowAll'=>$androidShowAll, 'normalShowAll'=>$normalShowAll]);
+        return View::make('admin.pages.firmware')->with(['sliders' => $sliders, 'page' => $page, 'cms_post' => $cms_Post, 'android'=>$android, 'normal'=>$normal, 'androidShowAll'=>$androidShowAll, 'normalShowAll'=>$normalShowAll]);
     }
+
+
+    public function getTutorialPage() {
+        $page=$this->cmsPageRepository->findBySlugOrId('tutorial');
+        $sliders='';
+        if($page->banner_type=='slider'){
+            $sliders = CmsPost::where([['cms_category_id', 8], ['status', 'PUBLISHED']])->get();
+        }
+        $cms_Post = CmsPost::where([['cms_category_id', 4], ['status', 'PUBLISHED']])->get();
+        $tutorial=Tutorial::take(7)->orderBy('created_at', 'desc')->get();
+          return View::make('admin.pages.tutorial')->with(['sliders' => $sliders, 'page' => $page, 'cms_post' => $cms_Post, 'tutorial'=>$tutorial]);
+    }
+
 
     public function howtouse() {
         $page = Page::findBySlugOrId('how-to-use-hub');

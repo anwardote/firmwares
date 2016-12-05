@@ -25,8 +25,8 @@ Route::group(['prefix' => ''], function () {
 
     Route::get('/tutorials', [
         'middleware' => array('can_see'),
-        'as' => 'tutorials',
-        'uses' => 'TutorialsController@getIndex']);
+        'as' => 'tutorial',
+        'uses' => 'CMSViewController@getTutorialPage']);
 
 
     Route::get('/drivers', [

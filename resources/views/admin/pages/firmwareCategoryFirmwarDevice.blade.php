@@ -48,12 +48,14 @@
         border: 1px transparent gray;
         color: black;
     }
+
     .wrapperLabel {
-    display:inline-block;
-        width:130px;
+        display: inline-block;
+        width: 130px;
         font-weight: 800;
     }
-
+.writer-profile-box { }
+    .writer-profile-box h3 {text-align: center}
 </style>
 
 
@@ -70,33 +72,62 @@
     <div id="newsWrapper">
         <div class="container">
             <div class="row">
-
                 @foreach ($results as $result)
-
                     <?php
                     $date = $result->created_at;
                     ?>
-
                     <div class="col-md-12 perCategoryWrapper">
                         <div class="col-md-2">
+                            <div class="writer-profile-box">
                             <a href="" target="_blank">
                                 <img class="img-responsive"
-                                     style='max-width: 100px; padding-top:25px; margin: auto; vertical-align: middle'
-                                     src="/{{ $result->device()->first()->image }}"/>
+                                     style='max-width: 100px; padding-top:25px; margin: auto;'
+                                     src="{{ $result->user_profile()->presenter()->avatar(170) }}"/>
                             </a>
+                            <?php $username = $result->user_profile()->first_name; ?>
+                            <p> <h3>@if(empty($username) || $username=='')
+                                    {{"User"}}
+                                @else
+                                   {{ $username }}
+                                @endif
+                            </h3>
+                            </p>
+                            </div>
                         </div>
 
                         <div class="col-md-10">
+
                             <h3>{{ $result->device_model }} Stock Rom</h3>
                             <hr>
                             <p><span class="wrapperLabel">Model Name </span> : {{ $result->device_model }}</p>
-                            <p><span class="wrapperLabel">Country </span> : {{ $result->country()->first()->country_name }}</p>
-                            <p><span class="wrapperLabel">Device Name </span> : {{ $result->device()->first()->name }}</p>
-                            <p><span class="wrapperLabel">Device Version </span> : @if($result->fcategory_id==1) {{ 'Android' }} @endif
+                            <a href="" target="_blank" class="pull-right temp-image-thumb">
+                                <img class="img-responsive"
+                                     style='max-width: 100px; padding-top:25px; margin: auto;'
+                                     src="/{{ $result->device()->first()->image }}"/>
+                            </a>
+                            <p><span class="wrapperLabel">Country </span> :
+                                @foreach($result->getcountryName($result->country_id) as $val)
+                                    {{ $val['country_name'] }},
+                                @endforeach
+                            </p>
+                            <p><span class="wrapperLabel">Device Name </span> : {{ $result->device()->first()->name }}
+                            </p>
+                            <p><span class="wrapperLabel">Device Version </span>
+                                : @if($result->fcategory_id==1) {{ 'Android' }} @endif
                                 {{ $result->device_version }}</p>
                             <p><span class="wrapperLabel">Download Size </span> : {{ $result->d_sizes }}</p>
-                            <p><span class="wrapperLabel">How to Flash </span> : <a href="">Click here to get instruction</a></p>
-                            <p><span class="wrapperLabel">Download Link(s) </span> : <a href="">Download</a></p>
+                            <p><span class="wrapperLabel">How to Flash </span> : <a href="">Click here to get
+                                    instruction</a></p>
+                            <p><span class="wrapperLabel">Download Link(s) </span> :
+                                <?php
+                                $downloadArr = explode(',', $result->d_links);
+                                $i = 1;
+                                ?>
+                                @foreach($downloadArr as $val)
+                                    <a href="{{$val}}" target="_blank">Download Link {{ $i++ }}</a> ,
+                                @endforeach
+
+                            </p>
                             <hr>
                             <p><span>Created at {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span
                                         class="pull-right"><a href="" target="_blank">Read More &raquo;</a></span></p>
@@ -113,7 +144,7 @@
 
             <div style="clear:both;"></div>
         </div>
-    </div>
+    </div><br>
 
 @stop
 

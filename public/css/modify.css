@@ -679,6 +679,7 @@ a.btn.btn-started {background: #d0112b;color: #fff;text-transform: uppercase;fon
         height:26px;
     }
 
+    .temp-image-thumb {display: none;}
     h2 {
         line-height:normal;
         padding-top:25px;
@@ -747,3 +748,8 @@ background: gray;
     }
 }
 
+
+@media only screen and (min-width : 545px) {
+
+
+}

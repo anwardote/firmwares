@@ -44,7 +44,7 @@ class PageTemplates
 
     /*Home Page End*/
 
-    public function tutorials_info()
+    public function tutorial()
     {
 
     }
