@@ -22,22 +22,20 @@ Route::group(['prefix' => ''], function () {
         'as' => 'firmware',
         'uses' => 'CMSViewController@getFirmwarePage']);
 
-
     Route::get('/tutorials', [
         'middleware' => array('can_see'),
         'as' => 'tutorial',
         'uses' => 'CMSViewController@getTutorialPage']);
 
-
     Route::get('/drivers', [
         'middleware' => array('can_see'),
-        'as' => 'drivers',
-        'uses' => 'DriversController@getIndex']);
+        'as' => 'driver',
+        'uses' => 'CMSViewController@getDriverPage']);
 
     Route::get('/tools', [
         'middleware' => array('can_see'),
-        'as' => 'tools',
-        'uses' => 'ToolsController@getIndex']);
+        'as' => 'tool',
+        'uses' => 'CMSViewController@getToolPage']);
 
     Route::get('/contact-us', [
         'middleware' => array('can_see'),
@@ -414,5 +412,19 @@ Route::group(['prefix' => 'firmware'], function () {
         'middleware' => array('can_see'),
         'as' => 'firmware.category.firmware',
         'uses' => 'FirmwaresController@getFirmware']);
+
+});
+
+Route::group(['prefix' => 'tutorial'], function () {
+    /* START Tutorial */
+    Route::get('view-category/{viewType?}', [
+        'middleware' => array('can_see'),
+        'as' => 'tutorial.category',
+        'uses' => 'CMSViewController@getTutorialCategoryView']);
+
+    Route::get('category/{id?}', [
+        'middleware' => array('can_see'),
+        'as' => 'tutorial.category.tutorial',
+        'uses' => 'TutorialsController@getTutorial']);
 
 });

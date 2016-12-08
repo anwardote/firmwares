@@ -142,34 +142,50 @@
 @section('content')
     <div id="faqTop">
         <div class="container">
-            <h1 id="pageTitle">For {{ ucwords($request->deviceType) }} Phone</h1>
+            <div class="row">
+                <div class="col-md-12">
+            <h1 id="pageTitle">Tutorials</h1>
+            <h4>Collection of evergreen step-by-step guides and detailed root tutorials to help you do more on your android, tablets, smartphone, symbian devices.</h4>
+        </div>
+        </div>
         </div>
     </div>
 
-    <div id="newsWrapper">
+    <div id="newsWrappers">
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
 
                 @foreach ($results as $result)
 
                     <?php
                     $date = $result->created_at;
-                    $content = preg_replace('#<img[^>]*>#i', '', $result->description);
                     ?>
 
                     <div class="col-md-12 perCategoryWrapper">
                         <div class="col-md-2">
-                            <a href="{{ route('firmware.category.firmware') }}/{{ $result->id }}" target="_blank">
-                                <img class="img-responsive" style='max-width: 100px; margin: auto; vertical-align: middle' src="/assets/icons/{{$request->deviceType}}-category-icon.png"/>
+                            <a href="{{ route('tutorial.category.tutorial') }}/{{ $result->id }}" target="_blank">
+                                <img class="img-responsive" style='max-width: 100px; margin: auto; vertical-align: middle' src="/images/tutorial-icon.png"/>
                             </a>
                         </div>
 
                         <div class="col-md-10">
-                            <h3><a href="{{ route('firmware.category.firmware') }}/{{ $result->id }}">{!!$result->title !!}</a></h3>
+                            <h3><a href="{{ route('tutorial.category.tutorial') }}/{{ $result->id }}">{!!$result->title !!}</a></h3>
                             <hr>
-                            <p>  {!!  substr($content, 0, strrpos(substr($content, 0, 250), " ")).' ...' !!} <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $result->id }}">Learn more</a></p>
+                            <p>
+                                <?php
+                                $shortDescription='';
+                                if(empty($result->st_instruct) || $result->st_instruct ==''){
+                                    $shortDescription = $result->description;
+                                } else {
+                                    $shortDescription = $result->st_instruct;
+                                }
+                                echo substr($shortDescription, 0, strrpos(substr($shortDescription, 0, 200), " ")).' ...';
+                                ?>
+
+                            </p>
                             <hr>
-                            <p><span>Created at  {!! date("M d, Y", strtotime($result->created_at)) !!}</span></p>
+                            <p><span>Created at  {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span class="pull-right"><a href="{{ route('tutorial.category.tutorial') }}/{{ $result->id }}" target="_blank">Read More &raquo;</a></span></p>
                         </div>
                     </div>
                 @endforeach
@@ -177,6 +193,7 @@
 
                 <div class="paginator">
                     {{ $results->appends($request->except(['page']) )->render() }}
+                </div>
                 </div>
             </div>
 

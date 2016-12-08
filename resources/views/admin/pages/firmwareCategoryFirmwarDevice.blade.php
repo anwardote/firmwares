@@ -54,8 +54,13 @@
         width: 130px;
         font-weight: 800;
     }
-.writer-profile-box { }
-    .writer-profile-box h3 {text-align: center}
+
+    .writer-profile-box {
+    }
+
+    .writer-profile-box h3 {
+        text-align: center
+    }
 </style>
 
 
@@ -64,7 +69,7 @@
         <div class="container">
             <h1 id="pageTitle"> {{ $category->title }} </h1>
             <hr>
-            <p><?php echo $category->description; ?></p>
+            <p class="image-pull-right"><?php echo $category->description; ?></p>
         </div>
 
     </div>
@@ -79,19 +84,20 @@
                     <div class="col-md-12 perCategoryWrapper">
                         <div class="col-md-2">
                             <div class="writer-profile-box">
-                            <a href="" target="_blank">
-                                <img class="img-responsive"
-                                     style='max-width: 100px; padding-top:25px; margin: auto;'
-                                     src="{{ $result->user_profile()->presenter()->avatar(170) }}"/>
-                            </a>
-                            <?php $username = $result->user_profile()->first_name; ?>
-                            <p> <h3>@if(empty($username) || $username=='')
-                                    {{"User"}}
-                                @else
-                                   {{ $username }}
-                                @endif
-                            </h3>
-                            </p>
+                                <a href="" target="_blank">
+                                    <img class="img-responsive"
+                                         style='max-width: 100px; padding-top:25px; margin: auto;'
+                                         src="{{ $result->user_profile()->presenter()->avatar(170) }}"/>
+                                </a>
+                                <?php $username = $result->user_profile()->first_name; ?>
+                                <p>
+                                <h3>@if(empty($username) || $username=='')
+                                        {{"User"}}
+                                    @else
+                                        {{ $username }}
+                                    @endif
+                                </h3>
+                                </p>
                             </div>
                         </div>
 
@@ -116,21 +122,34 @@
                                 : @if($result->fcategory_id==1) {{ 'Android' }} @endif
                                 {{ $result->device_version }}</p>
                             <p><span class="wrapperLabel">Download Size </span> : {{ $result->d_sizes }}</p>
-                            <p><span class="wrapperLabel">How to Flash </span> : <a href="">Click here to get
-                                    instruction</a></p>
-                            <p><span class="wrapperLabel">Download Link(s) </span> :
-                                <?php
-                                $downloadArr = explode(',', $result->d_links);
-                                $i = 1;
-                                ?>
-                                @foreach($downloadArr as $val)
-                                    <a href="{{$val}}" target="_blank">Download Link {{ $i++ }}</a> ,
-                                @endforeach
+                            <p><span class="wrapperLabel">How to Flash </span> :
+                                @if(!empty($result->tutorial_id) && $result->tutorial_id !=null)
+
+                                    <a href="{{ route('tutorial.category.tutorial').'/'.$result->tutorial_id }}"
+                                       target="_blank">
+                                        Click here to get instruction</a>
+                                @else
+                                    {{ 'No tutorial available!' }}
+                                @endif
+
 
                             </p>
-                            <hr>
-                            <p><span>Created at {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span
-                                        class="pull-right"><a href="" target="_blank">Read More &raquo;</a></span></p>
+                            <span class="wrapperLabel">Download Link(s) </span> :
+                            <?php
+                            $downloadArr = explode(',', $result->d_links);
+                            $i = 1;
+                            ?>
+                            @foreach($downloadArr as $val)
+                                <a href="{{$val}}" target="_blank">Download Link {{ $i++ }}</a> ,
+                                @endforeach
+
+                                </p>
+                                <hr>
+                                <p>
+                                    <span>Created at {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span
+                                            class="pull-right"><a href=""
+                                                                  target="_blank">Read More &raquo;</a></span>
+                                </p>
                         </div>
                     </div>
                 @endforeach
@@ -147,4 +166,17 @@
     </div><br>
 
 @stop
+
+@section('footer_scripts')
+    <script>
+        $(document).ready(function (e) {
+
+            $('#faqTop .image-pull-right img').addClass('pull-right');
+        })
+
+    </script>
+
+@stop
+
+
 

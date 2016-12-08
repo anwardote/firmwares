@@ -255,7 +255,7 @@
                         @foreach ($android as $a)
                             <?php
                             $title = $a->title;
-                            $content = $a->description;
+                            $content = preg_replace('#<img[^>]*>#i', '', $a->description);
                             ?>
                             <div class="col-sm-6">
                                 <div class="sheets-inner">
@@ -263,8 +263,7 @@
                                                                     src="/assets/icons/android-category-icon.png"/></a>
                                     <div class="right-s-in">
                                         <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}</a></h3>
-                                        <p>{!! $content !!}</p>
-                                        <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a>
+                                        <p>  {!!  substr($content, 0, strrpos(substr($content, 0, 150), " ")).' ...' !!} <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a></p>
 
                                     </div>
                                 </div>
@@ -300,7 +299,7 @@
                         @foreach ($normal as $a)
                             <?php
                             $title = $a->title;
-                            $content = $a->description;
+                                $content = preg_replace('#<img[^>]*>#i', '', $a->description);
                             ?>
                             <div class="col-sm-6">
                                 <div class="sheets-inner">
@@ -308,8 +307,8 @@
                                                                     src="/assets/icons/normal-category-icon.png"/></a>
                                     <div class="right-s-in">
                                         <h3><a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}</a></h3>
-                                        <p>{!! $content !!}</p>
-                                        <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a>
+                                        <p>  {!!  substr($content, 0, strrpos(substr($content, 0, 150), " ")).' ...' !!} <a target="_blank" href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn more</a></p>
+
 
                                     </div>
                                 </div>

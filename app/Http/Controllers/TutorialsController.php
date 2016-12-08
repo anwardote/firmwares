@@ -96,4 +96,14 @@ class TutorialsController extends Controller {
         return Redirect::route('tutorial.list')->withMessage(Config::get('acl_messages.flash.success.tutorial_delete_success'));
     }
 
+
+    public function getTutorial(Request $request){
+        $result = $this->tutorialRepository->find($request->id);
+        $result= (Object) $result->toArray();
+        //$results= (Object) $results;
+
+       // dd($results);
+        return View::make('admin.pages.tutorialById')->with(['result'=>$result, 'request'=>$request]);
+    }
+
 }

@@ -191,7 +191,7 @@ Tutorial | Free Firmware
                 <a href="{{ route('tutorial.category') }}/all" target="_blank" class="btn btn-danger">Show All Tutorials</a>
             </div>
         @endif
-        @foreach ($tutorial as $result)
+        @foreach ($driver as $result)
             <?php
             $date = $result->created_at;
             ?>
