@@ -8,7 +8,7 @@ use App\Http\Models\CmsCategory;
 
 class CmsPost extends Model {
 
-    protected $fillable = ['cms_category_id', 'title', 'slug', 'content', 'image', 'status', 'date', 'featured'];
+    protected $fillable = ['cms_category_id', 'title', 'slug', 'content', 'image', 'status', 'date', 'featured', 'source'];
 
     public function cmscategory() {
         return $this->belongsTo(CmsCategory::class, 'cms_category_id');

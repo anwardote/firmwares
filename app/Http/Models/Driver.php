@@ -7,7 +7,10 @@ use Cartalyst\Sentry\Users\LoginRequiredException;
 use App\Http\Models\Fcategory;
 use App\Http\Models\DriverName;
 use App\Http\Models\Tutorial;
+use App\Http\Models\DriverType;
 use App\User;
+use LaravelAcl\Authentication\Models\UserProfile;
+use LaravelAcl\Authentication\Presenters\UserProfilePresenter;
 
 class Driver extends Model {
 
@@ -28,6 +31,27 @@ class Driver extends Model {
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+    public function user_profile()
+    {
+        return new UserProfile();
+    }
+
+    public function presenter()
+    {
+        return new UserProfilePresenter($this);
+    }
+
+    public function getDriverTypeName($driverArray)
+    {
+        $driverArray = explode(',', $driverArray);
+        $model = new DriverType();
+        $DriverTypeName = $model->select('name')
+            ->whereIn('id', $driverArray)// pass an array
+            ->orderBy('id', 'ASC')
+            ->get();
+
+        return $DriverTypeName->toArray();
     }
 
 }

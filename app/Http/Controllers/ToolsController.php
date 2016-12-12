@@ -68,7 +68,7 @@ class ToolsController extends Controller {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'title' => 'required', 'view_category_id'=>'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'title' => 'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));
@@ -101,7 +101,7 @@ class ToolsController extends Controller {
         $downloadLink = implode(",", $request->download_link);
         $request->merge(array('download_link' => $downloadLink));
 
-        $this->validate($request, [ 'title' => 'required', 'view_category_id'=>'required','instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
+        $this->validate($request, [ 'title' => 'required', 'instructions' => 'required', 'supports' => 'required', 'status' => 'required', 'download_link' => 'required']);
 
         /* START custom value set */
         $request->merge(array('d_links' => $request->download_link));
@@ -128,4 +128,9 @@ class ToolsController extends Controller {
         return Redirect::route('tool.list')->withMessage(Config::get('acl_messages.flash.success.tool_delete_success'));
     }
 
+    public function getTool(Request $request){
+        $result = $this->toolRepository->find($request->id);
+        $result= (Object) $result->toArray();
+        return View::make('admin.pages.toolById')->with(['result'=>$result, 'request'=>$request]);
+    }
 }

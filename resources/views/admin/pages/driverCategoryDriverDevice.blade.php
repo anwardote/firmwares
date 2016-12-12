@@ -1,7 +1,7 @@
 @extends('admin.layouts.base-1cols')
 
 @section('title')
-    Firmware Category Firmware | Free Firmware
+    Driver Category Driver | Free Firmware
 @stop
 
 
@@ -51,7 +51,7 @@
 
     .wrapperLabel {
         display: inline-block;
-        width: 130px;
+        width: 150px;
         font-weight: 800;
     }
 
@@ -103,24 +103,22 @@
 
                         <div class="col-md-10">
 
-                            <h3>{{ $result->device_model }} Stock Rom</h3>
+                            <h3>{{ $result->driver_model }} </h3>
                             <hr>
-                            <p><span class="wrapperLabel">Model Name </span> : {{ $result->device_model }}</p>
+                            <p><span class="wrapperLabel">Driver Model </span> : {{ $result->driver_model }}</p>
                             <a href="" target="_blank" class="pull-right temp-image-thumb">
                                 <img class="img-responsive"
                                      style='max-width: 100px; padding-top:25px; margin: auto;'
-                                     src="/{{ $result->device()->first()->image }}"/>
+                                     src="/{{ $result->driver()->first()->image }}"/>
                             </a>
-                            <p><span class="wrapperLabel">Country </span> :
-                                @foreach($result->getcountryName($result->country_id) as $val)
-                                    {{ $val['country_name'] }},
+                            <p><span class="wrapperLabel">Driver Type </span> :
+                                @foreach($result->getDriverTypeName($result->driver_type) as $val)
+                                    {{ $val['name'] }},
                                 @endforeach
                             </p>
-                            <p><span class="wrapperLabel">Device Name </span> : {{ $result->device()->first()->name }}
+                            <p><span class="wrapperLabel">Supports </span> : {{ $result->supports }}
+                            <p><span class="wrapperLabel">Driver For </span> : {{ $result->driver()->first()->name }}
                             </p>
-                            <p><span class="wrapperLabel">Device Version </span>
-                                : @if($result->fcategory_id==1) {{ 'Android' }} @endif
-                                {{ $result->device_version }}</p>
                             <p><span class="wrapperLabel">Download Size </span> : {{ $result->d_sizes }}</p>
                             <p><span class="wrapperLabel">How to Flash </span> :
                                 @if(!empty($result->tutorial_id) && $result->tutorial_id !=null)
@@ -131,26 +129,22 @@
                                 @else
                                     {{ 'No tutorial available!' }}
                                 @endif
-
-
                             </p>
-                            <p>
-                                <span class="wrapperLabel">Download Link(s) </span> :
-                                <?php
-                                $downloadArr = explode(',', $result->d_links);
-                                $i = 1;
-                                ?>
-                                @foreach($downloadArr as $val)
-                                    <a href="{{$val}}" target="_blank">Download Link {{ $i++ }}</a> ,
+                            <span class="wrapperLabel">Download Link(s) </span> :
+                            <?php
+                            $downloadArr = explode(',', $result->d_links);
+                            $i = 1;
+                            ?>
+                            @foreach($downloadArr as $val)
+                                <a href="{{$val}}" target="_blank">Download Link {{ $i++ }}</a> ,
                                 @endforeach
-
-                            </p>
-                            <hr>
-                            <p>
-                                <span>Created at {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span
-                                        class="pull-right"><a href=""
-                                                              target="_blank">Read More &raquo;</a></span>
-                            </p>
+                                </p>
+                                <hr>
+                                <p>
+                                    <span>Created at {!! date("M d, Y", strtotime($result->created_at)) !!}</span><span
+                                            class="pull-right"><a href=""
+                                                                  target="_blank">Read More &raquo;</a></span>
+                                </p>
                         </div>
                     </div>
                 @endforeach

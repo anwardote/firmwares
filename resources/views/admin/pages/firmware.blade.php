@@ -246,7 +246,7 @@
         <div class="">
             @if(count($android)!=0 )
                 <h2 class="question pannel-head active"><img style="height: 40px" src="/assets/icons/android-icon.png"/>
-                    Android </h2>
+                    Android Firmware</h2>
                 <div class="resource-area">
                     <div class="row">
                         <?php
@@ -290,7 +290,7 @@
             @endif
             @if(count($normal)!=0 )
                 <h2 class="question pannel-head active"><img style="height: 40px" src="/assets/icons/normal-icon.png"/>
-                    Normal Phone </h2>
+                    Other Firmware </h2>
                 <div class="resource-area">
                     <div class="row">
                         <?php

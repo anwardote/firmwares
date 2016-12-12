@@ -428,3 +428,31 @@ Route::group(['prefix' => 'tutorial'], function () {
         'uses' => 'TutorialsController@getTutorial']);
 
 });
+
+Route::group(['prefix' => 'driver'], function () {
+    /* START Driver */
+    Route::get('view-category/{driverType?}', [
+        'middleware' => array('can_see'),
+        'as' => 'driver.category',
+        'uses' => 'ViewCategoryController@getDriverCategoryView']);
+
+    Route::get('category/{view_category_id?}', [
+        'middleware' => array('can_see'),
+        'as' => 'driver.category.driver',
+        'uses' => 'DriversController@getDriver']);
+
+});
+
+Route::group(['prefix' => 'tool'], function () {
+    /* START Tutorial */
+    Route::get('view-category/{viewType?}', [
+        'middleware' => array('can_see'),
+        'as' => 'tool.category',
+        'uses' => 'CMSViewController@getToolCategoryView']);
+
+    Route::get('category/{id?}', [
+        'middleware' => array('can_see'),
+        'as' => 'tool.category.tool',
+        'uses' => 'ToolsController@getTool']);
+
+});

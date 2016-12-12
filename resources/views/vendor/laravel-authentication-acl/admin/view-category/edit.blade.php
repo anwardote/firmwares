@@ -32,7 +32,9 @@ Admin area: add Tutorial
                         {{-- group base form --}}
 
                         {!! Form::model($data, [ 'url' => [URL::route('viewcategory.edit'), $data->id], 'method' => 'post', 'files' => true] ) !!}
-
+                        <?php
+                        unset($fcategory_output_values[4]);
+                        ?>
                         <div class="form-group">
                             {!! Form::label('fcategory_id','Select Category: *') !!}
                             {!! Form::select('fcategory_id', $fcategory_output_values, $data->fcategory_id, ["class"=>"form-control"]) !!}

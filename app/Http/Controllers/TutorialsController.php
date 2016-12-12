@@ -100,9 +100,6 @@ class TutorialsController extends Controller {
     public function getTutorial(Request $request){
         $result = $this->tutorialRepository->find($request->id);
         $result= (Object) $result->toArray();
-        //$results= (Object) $results;
-
-       // dd($results);
         return View::make('admin.pages.tutorialById')->with(['result'=>$result, 'request'=>$request]);
     }
 

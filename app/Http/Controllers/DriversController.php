@@ -32,6 +32,7 @@ use LaravelAcl\Authentication\Interfaces\AuthenticateInterface;
 use App\Http\Models\Driver;
 use App\Repositories\DriverRepository;
 use App\Repositories\GlobalRepository;
+use App\Repositories\ViewCategoryRepository;
 
 class DriversController extends Controller {
 
@@ -39,12 +40,14 @@ class DriversController extends Controller {
     protected $logged_user;
     protected $driverRepository;
     protected $globalrepository;
+    protected $viewCategoryRepository;
 
-    public function __construct(AuthenticateInterface $auth, DriverRepository $driverRepo, GlobalRepository $globalRepo) {
+    public function __construct(AuthenticateInterface $auth, DriverRepository $driverRepo, GlobalRepository $globalRepo, ViewCategoryRepository $viewCategoryRepo) {
         $this->auth = $auth;
         $this->logged_user = $this->auth->getLoggedUser();
         $this->driverRepository = $driverRepo;
         $this->globalrepository = $globalRepo;
+        $this->viewCategoryRepository = $viewCategoryRepo;
     }
 
     public function getIndex() {
@@ -144,6 +147,14 @@ class DriversController extends Controller {
     public function delete(Request $request) {
         $this->driverRepository->delete($request->id);
         return Redirect::route('driver.list')->withMessage(Config::get('acl_messages.flash.success.driver_delete_success'));
+    }
+
+    /*CMS Page View*/
+
+    public function getDriver(Request $request){
+        $results = $this->driverRepository->allWhere($request->except(['page']), $request);
+        $category = $this->viewCategoryRepository->find($request->view_category_id);
+        return View::make('admin.pages.driverCategoryDriverDevice')->with(['results'=>$results, 'request'=>$request, 'category'=>$category]);
     }
 
 }

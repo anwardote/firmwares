@@ -1,7 +1,7 @@
 @extends('admin.layouts.base-1cols')
 
 @section('title')
-    Driver | Free Firmware
+    Tool | Free Firmware
 @stop
 
 @section('head_css')
@@ -251,8 +251,8 @@
             <div class="">
                 @if(count($viwCategory)!=0 )
                     <h2 class="question pannel-head active"><img style="height: 40px"
-                                                                 src="/images/drivers.ico"/>
-                        Most Recent Popular Drivers</h2>
+                                                                 src="/images/tool.png"/>
+                        Most Recent Popular Tools</h2>
                     <div class="resource-area">
                         <div class="row">
                             <?php
@@ -261,21 +261,21 @@
                             @foreach ($viwCategory as $a)
                                 <?php
                                 $title = $a->title;
-                                $content = preg_replace('#<img[^>]*>#i', '', $a->description);
+                                $content = preg_replace('#<img[^>]*>#i', '', $a->instructions);
                                 ?>
                                 <div class="col-sm-6">
                                     <div class="sheets-inner">
                                         <a target="_blank"
-                                           href="{{ route('firmware.category.firmware') }}/{{ $a->id }}"><img
+                                           href="{{ route('tool.category.tool') }}/{{ $a->id }}"><img
                                                     style="max-width: 180px"
-                                                    src="/images/drivers.ico"/></a>
+                                                    src="/images/tool.png"/></a>
                                         <div class="right-s-in">
                                             <h3>
-                                                <a href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">{!! $title !!}</a>
+                                                <a href="{{ route('tool.category.tool') }}/{{ $a->id }}" target="_blank">{!! $title !!}</a>
                                             </h3>
                                             <p>  {!!  substr($content, 0, strrpos(substr($content, 0, 150), " ")).' ...' !!}
                                                 <a target="_blank"
-                                                   href="{{ route('firmware.category.firmware') }}/{{ $a->id }}">Learn
+                                                   href="{{ route('tool.category.tool') }}/{{ $a->id }}">Learn
                                                     more</a></p>
 
 
@@ -299,7 +299,7 @@
                     <div class="pull-right">
                         <img class="blink" src="/images/hand-indicator.png">
                         &nbsp;
-                        <a href="{{ route('driver.category') }}/driver" target="_blank" class="btn btn-danger">Show All Drivers</a>
+                        <a href="{{ route('tool.category') }}/all" target="_blank" class="btn btn-danger">Show All Tools</a>
                         {{--{{ HTML::link('firmware/category', 'Show All Normal/Smartphone Firmwares', array('class' => 'btn btn-danger'))}}--}}
 
                     </div>

@@ -58,7 +58,7 @@ class PageTemplates
     {
     }
 
-    public function tools()
+    public function tool()
     {
     }
 

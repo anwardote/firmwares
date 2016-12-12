@@ -106,7 +106,20 @@ class DriverRepository {
 
         return $driver;
     }
-    
+
+    /*CMS View*/
+
+    public function allWhere(array $search_filters = [], $request)
+    {
+
+        $q = new Driver();
+        $per_page = Config::get('acl_base.list_per_page');
+        // $q = $this->applySearchFilters($search_filters, $q);
+        return $q->where([['view_category_id', $request->view_category_id], ['status', 'PUBLISHED']])
+            ->orderBy('created_at', 'desc')
+            ->paginate($per_page);
+
+    }
     
 
 }

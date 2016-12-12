@@ -182,7 +182,9 @@
             });
             return false;
         }
-
+        $(".clear_elfinder_picker").click(function (e) {
+            $("#image-filemanager").val('');
+        })
     </script>
 
 @stop
